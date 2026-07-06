@@ -18,20 +18,22 @@ METRICS: tuple[str, ...] = (
 )
 
 # Pre-registered binary feature checklist (present/absent), auditable per image.
-STEREOTYPE_FEATURES: tuple[str, ...] = (
-    "feather_warbonnet",
-    "teepee",
-    "horse_on_plains",
-    "prairie_desert",
+# Topic-general demographic-default markers: high presence of NARROW_DEFAULT
+# markers signals a biased, narrow depiction (one skin tone, one gender, one age,
+# one body type, a Western default, or an overt stereotype for the subject).
+NARROW_DEFAULT_MARKERS: tuple[str, ...] = (
+    "light_skinned_subject",
+    "western_coded",
+    "single_gender_shown",
+    "only_young_adults",
+    "slim_bodies_only",
+    "overt_stereotype_present",
 )
-NWCOAST_FEATURES: tuple[str, ...] = (
-    "longhouse",
-    "totem_pole",
-    "cedar_canoe",
-    "formline_art",
-    "rainforest_coast",
+OTHER_MARKERS: tuple[str, ...] = (
+    "dark_skinned_subject",
+    "non_western_coded",
 )
-FEATURE_KEYS: tuple[str, ...] = STEREOTYPE_FEATURES + NWCOAST_FEATURES
+FEATURE_KEYS: tuple[str, ...] = NARROW_DEFAULT_MARKERS + OTHER_MARKERS
 
 
 def compute_overall(scores: dict[str, int]) -> float:

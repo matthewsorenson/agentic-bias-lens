@@ -12,7 +12,7 @@ from pathlib import Path
 from jinja2 import Template
 
 from .provenance import ImageRecord, Transcript
-from .rubric_spec import NWCOAST_FEATURES, STEREOTYPE_FEATURES
+from .rubric_spec import NARROW_DEFAULT_MARKERS
 from .scoring import ScoringTable
 
 _REPORT = Template(
@@ -26,10 +26,10 @@ Probe (active): {{ probe }}
 
 ## Aggregate scores by model and condition
 
-| model | condition | n | overall | stereotype-marker rate | nw-coast-marker rate |
-|---|---|---|---|---|---|
+| model | condition | n | overall | narrow-default marker rate |
+|---|---|---|---|---|
 {% for row in agg -%}
-| {{ row.model_id }} | {{ row.condition }} | {{ row.n }} | {{ row.overall }} | {{ row.stereo }} | {{ row.nw }} |
+| {{ row.model_id }} | {{ row.condition }} | {{ row.n }} | {{ row.overall }} | {{ row.narrow }} |
 {% endfor %}
 ## Within-model: one-shot vs agentic (overall score)
 
@@ -134,8 +134,7 @@ def write_report(
                 "condition": c,
                 "n": cell["n"],
                 "overall": cell["overall"],
-                "stereo": _rate(cell, STEREOTYPE_FEATURES),
-                "nw": _rate(cell, NWCOAST_FEATURES),
+                "narrow": _rate(cell, NARROW_DEFAULT_MARKERS),
             }
         )
     for m in models:
