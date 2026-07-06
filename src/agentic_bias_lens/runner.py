@@ -68,6 +68,7 @@ async def run_experiment(
     k_img = int(settings.experiment.get("k_img", 1))
     seed = int(settings.experiment.get("seed", 0))
     conc = int(settings.experiment.get("concurrency_per_provider", 3))
+    style = str(settings.experiment.get("image_style") or "").strip()
 
     # 1. Build prompts for every condition, concurrently.
     async def build(cond: str):
@@ -87,7 +88,10 @@ async def run_experiment(
 
     async def gen_cell(cond, pidx, final_prompt, model, sidx):
         provider = registry.effective_provider(model.id)
-        raw = f"{cond}|{model.id}|{final_prompt}|{pidx}|{sidx}"
+        # Append the shared style to every image prompt so style is held constant
+        # across conditions and models. Recorded in prompt_as_sent, not hidden.
+        styled = f"{final_prompt} {style}".strip() if style else final_prompt
+        raw = f"{cond}|{model.id}|{styled}|{pidx}|{sidx}"
         cell = hashlib.sha1(raw.encode("utf-8")).hexdigest()[:16]
         sidecar = run_dir / "images" / f"cell_{cell}.json"
         if sidecar.exists() and not force:
@@ -96,7 +100,7 @@ async def run_experiment(
                 return ImageRecord(**data["record"])
         async with sem_for(provider):
             res = await model.generate(
-                ImageRequest(prompt=final_prompt, seed=seed + pidx * 1000 + sidx)
+                ImageRequest(prompt=styled, seed=seed + pidx * 1000 + sidx)
             )
         # Rename to a canonical, unique cell path so provenance is unambiguous
         # even when two conditions coincidentally produce the same prompt.
@@ -107,8 +111,8 @@ async def run_experiment(
         rec = ImageRecord(
             condition=cond,
             model_id=model.id,
-            prompt_original=res.prompt_original,
-            prompt_as_sent=res.prompt_as_sent,
+            prompt_original=final_prompt,  # the pipeline's finalized prompt, unstyled
+            prompt_as_sent=res.prompt_as_sent,  # exact string the model received (styled)
             image_path=target,
             seed=res.seed,
             sample_index=sidx,

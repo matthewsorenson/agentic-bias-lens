@@ -13,7 +13,15 @@ conditions: [A, A_prime, B, C]
 # Sampling. k_prompt = agent-chain re-runs per agentic pipeline (prompt-gen
 # stochasticity). k_img = images per prompt per model (image-gen stochasticity).
 k_prompt: 1                 # raise to 5 when time allows (see spec 4.3)
-k_img: 5
+k_img: 1                    # one image per (condition, model); run several prompts for breadth
+
+# A shared style suffix appended to EVERY image prompt (all conditions, all
+# models), so outputs are visually comparable and style is held constant as a
+# variable. It is recorded transparently in each image's prompt_as_sent. Set to
+# "" to disable, or override per run with --image-style. A neutral documentary
+# style is the safe default for a bias study; a heavy art style can obscure
+# signals like skin tone and realism.
+image_style: "Consistent visual style for every image: a natural documentary photograph, realistic even lighting, neutral color grading, shot on 35mm film."
 
 image_models: [gpt-image-1, imagen-4-fast, seedream, qwen-image]
 judges: [gpt-4o, qwen-vl]
