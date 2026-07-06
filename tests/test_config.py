@@ -17,13 +17,13 @@ def test_missing_role_raises(config_dir):
         s.validate_rosters()
 
 
-def test_judge_conflict_of_interest_raises(config_dir):
+def test_judge_conflict_of_interest_is_warning_then_strict_raises(config_dir):
     s = Settings.load(config_dir)
-    # A Claude judge shares the 'anthropic' family with Pipeline B's brains.
-    s.models["claude-judge"] = s.models["claude-opus-4-8"].model_copy(update={"kind": "judge"})
-    s.experiment["judges"] = ["claude-judge", "qwen-vl"]
+    # shipped config uses a Claude judge sharing the anthropic family with B's brains
+    warnings = s.validate_rosters()  # default: warning, does not raise
+    assert any("provider family" in w for w in warnings)
     with pytest.raises(ConfigError):
-        s.validate_rosters()
+        s.validate_rosters(strict_judge_coi=True)
 
 
 def test_active_probe_text(config_dir):

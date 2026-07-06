@@ -171,6 +171,13 @@ class Registry:
                 out.append(FakeJudge(mk))
                 continue
             provider = self.effective_provider(mk)
+            if provider == "anthropic":
+                if self._anthropic_mode() == "cli":
+                    from .adapters.claude_cli import ClaudeCliJudge
+
+                    out.append(ClaudeCliJudge(mk, executable=self._claude_path() or "claude"))
+                # api mode has no anthropic vision-judge adapter; skip otherwise
+                continue
             if self._has_key(provider):
                 out.append(self._make_real("judge", mk, provider))
         return out

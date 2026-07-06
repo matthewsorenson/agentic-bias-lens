@@ -48,7 +48,15 @@ models:
     kind: image
     base_url: https://fal.run
 
-  # --- vision judges (deliberately NOT anthropic or glm) ---
+  # --- vision judges ---
+  # Default US-lens judge is Claude Sonnet via the local CLI (no OpenAI text).
+  # gpt-4o stays defined but off by default. Note: Claude judging Pipeline B
+  # (also Claude-brained) is home-team judging for B; recorded as a limitation.
+  claude-sonnet-judge:
+    provider: anthropic
+    family: anthropic
+    kind: judge
+    base_url: null            # runs via the claude CLI (subscription)
   gpt-4o:
     provider: openai
     family: openai

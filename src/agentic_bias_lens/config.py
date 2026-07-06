@@ -58,21 +58,31 @@ class Settings(BaseModel):
         key = self.experiment["active_probe"]
         return self.experiment["probes"][key]
 
-    def validate_rosters(self) -> None:
+    def validate_rosters(self, *, strict_judge_coi: bool = False) -> list[str]:
+        """Raise on structural errors (missing roles); return judge-COI warnings.
+
+        A judge sharing a family with an agent brain is a warning by default
+        (home-team judging), or a hard error when strict_judge_coi is set.
+        """
+        warnings: list[str] = []
         brain_families: set[str] = set()
         for name, roster in self.rosters.items():
             for role in REQUIRED_ROLES:
                 if role not in roster:
                     raise ConfigError(f"roster '{name}' is missing role '{role}'")
-                spec = self.resolve(roster[role])
-                brain_families.add(spec.family)
+                brain_families.add(self.resolve(roster[role]).family)
 
         judge_families = {self.resolve(j).family for j in self.experiment.get("judges", [])}
         overlap = brain_families & judge_families
         if overlap:
-            raise ConfigError(
-                f"judge shares a provider family with an agent brain under test: {sorted(overlap)}"
+            msg = (
+                f"judge shares a provider family with an agent brain under test: "
+                f"{sorted(overlap)} (home-team judging for that pipeline)"
             )
+            if strict_judge_coi:
+                raise ConfigError(msg)
+            warnings.append(msg)
+        return warnings
 
 
 def _read_yaml(path: Path) -> dict:

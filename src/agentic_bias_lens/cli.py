@@ -56,7 +56,10 @@ def main(argv=None) -> int:
     args = _parse(argv)
     config_dir = Path(args.config_dir)
     settings = Settings.load(config_dir)
-    settings.validate_rosters()
+    for w in settings.validate_rosters(
+        strict_judge_coi=bool(settings.experiment.get("strict_judge_coi", False))
+    ):
+        print(f"warning: {w}")
 
     if args.pipelines:
         settings.experiment["conditions"] = args.pipelines.split(",")
