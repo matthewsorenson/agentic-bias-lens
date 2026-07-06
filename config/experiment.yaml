@@ -20,6 +20,11 @@ judges: [gpt-4o, qwen-vl]
 
 research_mode: unsourced    # sourced | unsourced   (unsourced is the control)
 
+# Pipeline A_prime (verbose-naive control) uses one model to expand the probe
+# into a long detailed prompt with NO bias reasoning, isolating verbosity from
+# agentic reasoning. Matched to Pipeline B's finalizer brain.
+verbose_model: claude-opus-4-8
+
 # Image-model route switches. Default to the fal.ai aggregator for the Chinese
 # models to keep the two hardest native signups off the critical path.
 routes:
