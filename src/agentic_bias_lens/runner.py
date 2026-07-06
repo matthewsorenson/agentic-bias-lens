@@ -50,6 +50,7 @@ class RunResult(BaseModel):
     table: ScoringTable
     transcripts: list[Transcript]
     image_records: list[ImageRecord]
+    skipped_conditions: list[str] = []
 
 
 async def run_experiment(
@@ -70,14 +71,25 @@ async def run_experiment(
     conc = int(settings.experiment.get("concurrency_per_provider", 3))
     style = str(settings.experiment.get("image_style") or "").strip()
 
-    # 1. Build prompts for every condition, concurrently.
+    # A condition is only runnable if all its agent brains have keys. Skip the
+    # rest cleanly instead of crashing (graceful degradation for partial keys).
+    active_conditions: list[str] = []
+    skipped_conditions: list[str] = []
+    for cond in conditions:
+        agents = PipelineBuilder.from_config(settings, cond)
+        if all(registry.chat_available(a.model_id) for a in agents):
+            active_conditions.append(cond)
+        else:
+            skipped_conditions.append(cond)
+
+    # 1. Build prompts for every active condition, concurrently.
     async def build(cond: str):
         agents = PipelineBuilder.from_config(settings, cond)
         reps = k_prompt if cond in AGENTIC else 1
         results = [await AgenticPipeline(agents, registry, cond).run(probe) for _ in range(reps)]
         return cond, results
 
-    prompts_by_cond = dict(await asyncio.gather(*(build(c) for c in conditions)))
+    prompts_by_cond = dict(await asyncio.gather(*(build(c) for c in active_conditions)))
 
     # 2. Generate images, fanned out under a per-provider semaphore, with caching.
     image_models = registry.image_models()
@@ -150,7 +162,10 @@ async def run_experiment(
 
     # 4. Write artifacts (prompts first: the contact sheet reads them back).
     write_prompts(run_dir, transcripts, image_records)
-    write_manifest(run_dir, _manifest(settings, registry, seed, probe, image_records))
+    manifest = _manifest(settings, registry, seed, probe, image_records)
+    manifest["active_conditions"] = active_conditions
+    manifest["skipped_conditions"] = skipped_conditions
+    write_manifest(run_dir, manifest)
     dump_json(
         {
             "verdicts": [v.model_dump() for v in table.raw()],
@@ -159,7 +174,9 @@ async def run_experiment(
         },
         run_dir / "scores.json",
     )
-    write_report(run_dir, table, transcripts, reliability, probe=probe, conditions=conditions)
+    write_report(
+        run_dir, table, transcripts, reliability, probe=probe, conditions=active_conditions
+    )
 
     return RunResult(
         run_dir=run_dir,
@@ -169,6 +186,7 @@ async def run_experiment(
         table=table,
         transcripts=transcripts,
         image_records=image_records,
+        skipped_conditions=skipped_conditions,
     )
 
 

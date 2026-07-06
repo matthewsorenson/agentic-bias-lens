@@ -109,6 +109,12 @@ class Registry:
             raise MissingProvider(model_id, provider)
         return self._make_real("chat", model_id, provider)
 
+    def chat_available(self, model_id: str) -> bool:
+        """True if this chat model's provider key is present (or in fake mode)."""
+        if self.fake:
+            return True
+        return self._has_key(self.effective_provider(model_id))
+
     def image_models(self) -> list[ImageModel]:
         out: list[ImageModel] = []
         for mk in self.settings.experiment["image_models"]:

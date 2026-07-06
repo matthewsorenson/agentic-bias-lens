@@ -96,6 +96,8 @@ def main(argv=None) -> int:
     print(f"providers available: {', '.join(avail.available) or 'none'}")
     if avail.missing:
         print(f"providers skipped (no key): {', '.join(avail.missing)}")
+    if result.skipped_conditions:
+        print(f"conditions skipped (no brain key): {', '.join(result.skipped_conditions)}")
     print(f"report: {result.run_dir / 'report.md'}")
     return 0
 
