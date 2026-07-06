@@ -24,11 +24,12 @@ k_img: 1                    # one image per (condition, model); run several prom
 image_style: "Consistent visual style for every image: a natural documentary photograph, realistic even lighting, neutral color grading, shot on 35mm film."
 
 image_models: [gpt-image-1, imagen-4-fast, seedream, qwen-image]
-judges: [claude-sonnet-judge, qwen-vl]   # US lens via claude CLI, CN lens via Qwen-VL
+judges: [gemini-judge, qwen-vl]   # US lens via Gemini API (blinded), CN lens via Qwen-VL
 
-# The default US judge (Claude) shares a family with Pipeline B's brains, so the
-# judge conflict-of-interest is a recorded warning, not a hard error. Set true to
-# forbid it (e.g. if you switch back to a neutral judge like gpt-4o).
+# A judge sharing a family with an agent brain is home-team judging. The default
+# gemini judge does not conflict; this is a recorded warning by default, or a hard
+# error when true (e.g. if you switch the judge to the claude CLI, which shares a
+# family with Pipeline B).
 strict_judge_coi: false
 
 research_mode: unsourced    # sourced | unsourced   (unsourced is the control)

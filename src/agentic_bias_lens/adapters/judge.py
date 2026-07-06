@@ -85,3 +85,48 @@ class Gpt4oJudge(_ChatImageJudge):
 
 class QwenVLJudge(_ChatImageJudge):
     pass
+
+
+class GeminiJudge:
+    """Provably blinded vision judge: sends image bytes to the Gemini API. The
+    model never sees a filename or any provenance, only the pixels and the rubric.
+    """
+
+    def __init__(self, id, base_url, api_key, model="gemini-2.5-flash", client=None):
+        self.id = id
+        self.model = model
+        self.transport = Transport(
+            base_url, {"x-goog-api-key": api_key, "Content-Type": "application/json"}, client
+        )
+
+    async def judge(self, req: JudgeRequest) -> JudgeResult:
+        b64 = base64.b64encode(Path(req.image_path).read_bytes()).decode("ascii")
+        payload = {
+            "contents": [
+                {
+                    "parts": [
+                        {"text": _judge_instruction(req.rubric, req.probe_intent)},
+                        {"inline_data": {"mime_type": "image/png", "data": b64}},
+                    ]
+                }
+            ],
+            "generationConfig": {"responseMimeType": "application/json"},
+        }
+        last_err: Exception | None = None
+        for _ in range(_MAX_PARSE_RETRIES + 1):
+            data = await self.transport.post(f"/models/{self.model}:generateContent", payload)
+            try:
+                text = data["candidates"][0]["content"]["parts"][0]["text"]
+                parsed = json.loads(text)
+                scores = {m: MetricScore(**parsed["scores"][m]) for m in METRICS}
+                features = {k: bool(parsed.get("features", {}).get(k, False)) for k in FEATURE_KEYS}
+                return JudgeResult(
+                    image_id=Path(req.image_path).stem,
+                    judge_id=self.id,
+                    scores=scores,
+                    features=features,
+                    raw_response=data,
+                )
+            except (KeyError, ValueError, TypeError, IndexError) as exc:
+                last_err = exc
+        raise ValueError(f"gemini judge returned unparseable output: {last_err}")

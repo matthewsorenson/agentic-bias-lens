@@ -17,9 +17,15 @@ def test_missing_role_raises(config_dir):
         s.validate_rosters()
 
 
+def test_shipped_config_judge_is_conflict_free(config_dir):
+    # the default Gemini judge shares no family with the Anthropic/GLM brains
+    assert Settings.load(config_dir).validate_rosters() == []
+
+
 def test_judge_conflict_of_interest_is_warning_then_strict_raises(config_dir):
     s = Settings.load(config_dir)
-    # shipped config uses a Claude judge sharing the anthropic family with B's brains
+    # force a conflict: the Claude judge shares the anthropic family with B's brains
+    s.experiment["judges"] = ["claude-sonnet-judge", "qwen-vl"]
     warnings = s.validate_rosters()  # default: warning, does not raise
     assert any("provider family" in w for w in warnings)
     with pytest.raises(ConfigError):

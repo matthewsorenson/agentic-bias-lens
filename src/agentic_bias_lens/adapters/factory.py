@@ -16,9 +16,10 @@ from .image import (
     GeminiImage,
     OpenAIImage,
 )
-from .judge import Gpt4oJudge, QwenVLJudge
+from .judge import GeminiJudge, Gpt4oJudge, QwenVLJudge
 
 QWEN_VL_MODEL = "qwen-vl-max"
+GEMINI_JUDGE_MODEL = {"gemini-judge": "gemini-2.5-flash"}
 DASHSCOPE_IMAGE_MODEL = {"qwen-image": "wan2.2-t2i-flash"}
 BYTEPLUS_IMAGE_MODEL = {"seedream": "seedream-4-0-250828"}
 
@@ -53,6 +54,10 @@ def make_capability(kind, model_id, spec, provider, api_key, images_dir):
     if kind == "judge":
         if provider == "openai":
             return Gpt4oJudge(model_id, base, api_key, model=model_id)
+        if provider == "gemini":
+            return GeminiJudge(
+                model_id, base, api_key, model=GEMINI_JUDGE_MODEL.get(model_id, "gemini-2.5-flash")
+            )
         if provider in ("dashscope", "fal"):
             return QwenVLJudge(model_id, base, api_key, model=QWEN_VL_MODEL)
 

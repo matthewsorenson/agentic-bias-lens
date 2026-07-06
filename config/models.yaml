@@ -49,14 +49,21 @@ models:
     base_url: https://fal.run
 
   # --- vision judges ---
-  # Default US-lens judge is Claude Sonnet via the local CLI (no OpenAI text).
-  # gpt-4o stays defined but off by default. Note: Claude judging Pipeline B
-  # (also Claude-brained) is home-team judging for B; recorded as a limitation.
+  # Default US-lens judge is Gemini via the API: provably blinded (bytes-only, no
+  # filesystem), not OpenAI, no conflict with the agent brains. gpt-4o and the
+  # claude CLI judge stay defined as alternatives but are off by default. The
+  # claude CLI judge is an agent with filesystem access, so it is a WEAKER blind
+  # (it could enumerate the un-blinded originals) and is not recommended.
+  gemini-judge:
+    provider: gemini
+    family: google
+    kind: judge
+    base_url: https://generativelanguage.googleapis.com/v1beta
   claude-sonnet-judge:
     provider: anthropic
     family: anthropic
     kind: judge
-    base_url: null            # runs via the claude CLI (subscription)
+    base_url: null            # runs via the claude CLI (subscription); weaker blind
   gpt-4o:
     provider: openai
     family: openai

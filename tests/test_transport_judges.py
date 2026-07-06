@@ -3,11 +3,12 @@ import json
 import httpx
 import respx
 
-from agentic_bias_lens.adapters.judge import Gpt4oJudge
+from agentic_bias_lens.adapters.judge import GeminiJudge, Gpt4oJudge
 from agentic_bias_lens.capabilities import JudgeRequest
 from agentic_bias_lens.rubric_spec import FEATURE_KEYS, METRICS
 
 URL = "https://api.openai.com/v1/chat/completions"
+GEMINI_BASE = "https://generativelanguage.googleapis.com/v1beta"
 
 
 def _verdict_json(feature_value=False):
@@ -33,6 +34,21 @@ async def test_gpt4o_judge_parses_full_rubric(tmp_path, png_bytes):
     assert set(res.scores) == set(METRICS)
     assert set(res.features) == set(FEATURE_KEYS)
     assert res.judge_id == "gpt-4o"
+
+
+@respx.mock
+async def test_gemini_judge_parses_full_rubric(tmp_path, png_bytes):
+    p = tmp_path / "blind.png"
+    p.write_bytes(png_bytes)
+    body = {"candidates": [{"content": {"parts": [{"text": _verdict_json()}]}}]}
+    respx.post(f"{GEMINI_BASE}/models/gemini-2.5-flash:generateContent").mock(
+        return_value=httpx.Response(200, json=body)
+    )
+    j = GeminiJudge("gemini-judge", GEMINI_BASE, "k", model="gemini-2.5-flash")
+    res = await j.judge(JudgeRequest(image_path=p, rubric="r", probe_intent="i"))
+    assert set(res.scores) == set(METRICS)
+    assert set(res.features) == set(FEATURE_KEYS)
+    assert res.judge_id == "gemini-judge"
 
 
 @respx.mock
