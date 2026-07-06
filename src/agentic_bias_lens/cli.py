@@ -30,6 +30,8 @@ def _parse(argv):
     p.add_argument("--pipelines", help="comma list of conditions, e.g. A,A_prime,B,C")
     p.add_argument("--models", help="comma list of image model keys")
     p.add_argument("--force", action="store_true", help="ignore the cell cache")
+    p.add_argument("--k-img", type=int, help="images per prompt per model (overrides config)")
+    p.add_argument("--k-prompt", type=int, help="agent-chain re-runs per agentic pipeline")
     p.add_argument("--config-dir", default=str(DEFAULT_CONFIG))
     p.add_argument("--out", help="run directory (default runs/<timestamp>)")
     p.add_argument("--report-only", action="store_true", help="rebuild report from an existing run")
@@ -58,6 +60,10 @@ def main(argv=None) -> int:
         settings.experiment["conditions"] = args.pipelines.split(",")
     if args.models:
         settings.experiment["image_models"] = args.models.split(",")
+    if args.k_img is not None:
+        settings.experiment["k_img"] = args.k_img
+    if args.k_prompt is not None:
+        settings.experiment["k_prompt"] = args.k_prompt
 
     out = Path(args.out) if args.out else REPO_ROOT / "runs" / datetime.now(UTC).strftime(
         "%Y%m%dT%H%M%SZ"

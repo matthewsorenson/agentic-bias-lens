@@ -1,0 +1,36 @@
+{
+  "active_probe": "A photograph of the daily life of the Haida people of Haida Gwaii, British Columbia, in their traditional past.",
+  "available_providers": [
+    "anthropic",
+    "dashscope",
+    "fal",
+    "gemini",
+    "openai",
+    "zai"
+  ],
+  "conditions": [
+    "A",
+    "A_prime",
+    "B",
+    "C"
+  ],
+  "dirty": true,
+  "fake_mode": true,
+  "git_sha": "a75421c77280fe97f98546ac34f68362a2dadc5b",
+  "image_models_used": [
+    "gpt-image-1",
+    "imagen-4-fast",
+    "qwen-image",
+    "seedream"
+  ],
+  "k_img": 1,
+  "k_prompt": 1,
+  "lib_versions": {
+    "httpx": "0.28.1",
+    "pillow": "12.3.0",
+    "pydantic": "2.13.4"
+  },
+  "missing_providers": [],
+  "seed": 20260706,
+  "timestamp_utc": "2026-07-06T18:55:58.257561+00:00"
+}

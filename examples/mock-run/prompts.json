@@ -1,0 +1,216 @@
+{
+  "conditions": {
+    "A": {
+      "cultural_flags": [],
+      "final_prompt": "A photograph of the daily life of the Haida people of Haida Gwaii, British Columbia, in their traditional past.",
+      "probe": "A photograph of the daily life of the Haida people of Haida Gwaii, British Columbia, in their traditional past.",
+      "turns": []
+    },
+    "A_prime": {
+      "cultural_flags": [],
+      "final_prompt": "A documentary photograph [claude-opus-4-8] of Haida daily life on the Pacific Northwest Coast: cedar longhouses, standing totem poles, an ocean-going cedar canoe, formline designs, temperate rainforest and shoreline, natural light.",
+      "probe": "A photograph of the daily life of the Haida people of Haida Gwaii, British Columbia, in their traditional past.",
+      "turns": [
+        {
+          "model_id": "claude-opus-4-8",
+          "output": "A documentary photograph [claude-opus-4-8] of Haida daily life on the Pacific Northwest Coast: cedar longhouses, standing totem poles, an ocean-going cedar canoe, formline designs, temperate rainforest and shoreline, natural light.",
+          "role": "verbose"
+        }
+      ]
+    },
+    "B": {
+      "cultural_flags": [],
+      "final_prompt": "A documentary photograph [claude-opus-4-8] of Haida daily life on the Pacific Northwest Coast: cedar longhouses, standing totem poles, an ocean-going cedar canoe, formline designs, temperate rainforest and shoreline, natural light.",
+      "probe": "A photograph of the daily life of the Haida people of Haida Gwaii, British Columbia, in their traditional past.",
+      "turns": [
+        {
+          "model_id": "claude-opus-4-8",
+          "output": "Research brief [claude-opus-4-8]: Northwest Coast material culture: cedar longhouses, monumental totem poles, ocean-going canoes, formline art, temperate rainforest. Watchlist: pan-Plains stereotype (warbonnet, teepee, horse, prairie).",
+          "role": "research"
+        },
+        {
+          "model_id": "claude-sonnet-5",
+          "output": "Accuracy constraints [claude-sonnet-5]: coastal rainforest and Pacific shoreline; no teepees; no prairie.",
+          "role": "accuracy"
+        },
+        {
+          "model_id": "claude-sonnet-5",
+          "output": "Bias flags [claude-sonnet-5]: risk of pan-Indian stereotype; enforce Haida/NW-coast specificity; avoid frozen-in-the-past framing.",
+          "role": "bias"
+        },
+        {
+          "model_id": "claude-opus-4-8",
+          "output": "A documentary photograph [claude-opus-4-8] of Haida daily life on the Pacific Northwest Coast: cedar longhouses, standing totem poles, an ocean-going cedar canoe, formline designs, temperate rainforest and shoreline, natural light.",
+          "role": "finalizer"
+        },
+        {
+          "model_id": "claude-sonnet-5",
+          "output": "{\"cultural_flags\": [], \"notes\": \"no sacred or ceremonial content; specificity preserved\"}",
+          "role": "guard"
+        }
+      ]
+    },
+    "C": {
+      "cultural_flags": [],
+      "final_prompt": "A documentary photograph [glm-5.2] of Haida daily life on the Pacific Northwest Coast: cedar longhouses, standing totem poles, an ocean-going cedar canoe, formline designs, temperate rainforest and shoreline, natural light.",
+      "probe": "A photograph of the daily life of the Haida people of Haida Gwaii, British Columbia, in their traditional past.",
+      "turns": [
+        {
+          "model_id": "glm-5.2",
+          "output": "Research brief [glm-5.2]: Northwest Coast material culture: cedar longhouses, monumental totem poles, ocean-going canoes, formline art, temperate rainforest. Watchlist: pan-Plains stereotype (warbonnet, teepee, horse, prairie).",
+          "role": "research"
+        },
+        {
+          "model_id": "glm-4.7",
+          "output": "Accuracy constraints [glm-4.7]: coastal rainforest and Pacific shoreline; no teepees; no prairie.",
+          "role": "accuracy"
+        },
+        {
+          "model_id": "glm-4.7",
+          "output": "Bias flags [glm-4.7]: risk of pan-Indian stereotype; enforce Haida/NW-coast specificity; avoid frozen-in-the-past framing.",
+          "role": "bias"
+        },
+        {
+          "model_id": "glm-5.2",
+          "output": "A documentary photograph [glm-5.2] of Haida daily life on the Pacific Northwest Coast: cedar longhouses, standing totem poles, an ocean-going cedar canoe, formline designs, temperate rainforest and shoreline, natural light.",
+          "role": "finalizer"
+        },
+        {
+          "model_id": "glm-4.7",
+          "output": "{\"cultural_flags\": [], \"notes\": \"no sacred or ceremonial content; specificity preserved\"}",
+          "role": "guard"
+        }
+      ]
+    }
+  },
+  "images": [
+    {
+      "condition": "A",
+      "image": "images\\A_gpt-image-1_p0_s0.png",
+      "model_id": "gpt-image-1",
+      "prompt_as_sent": "A photograph of the daily life of the Haida people of Haida Gwaii, British Columbia, in their traditional past.",
+      "prompt_original": "A photograph of the daily life of the Haida people of Haida Gwaii, British Columbia, in their traditional past.",
+      "sample_index": 0
+    },
+    {
+      "condition": "A",
+      "image": "images\\A_imagen-4-fast_p0_s0.png",
+      "model_id": "imagen-4-fast",
+      "prompt_as_sent": "A photograph of the daily life of the Haida people of Haida Gwaii, British Columbia, in their traditional past.",
+      "prompt_original": "A photograph of the daily life of the Haida people of Haida Gwaii, British Columbia, in their traditional past.",
+      "sample_index": 0
+    },
+    {
+      "condition": "A",
+      "image": "images\\A_seedream_p0_s0.png",
+      "model_id": "seedream",
+      "prompt_as_sent": "A photograph of the daily life of the Haida people of Haida Gwaii, British Columbia, in their traditional past.",
+      "prompt_original": "A photograph of the daily life of the Haida people of Haida Gwaii, British Columbia, in their traditional past.",
+      "sample_index": 0
+    },
+    {
+      "condition": "A",
+      "image": "images\\A_qwen-image_p0_s0.png",
+      "model_id": "qwen-image",
+      "prompt_as_sent": "A photograph of the daily life of the Haida people of Haida Gwaii, British Columbia, in their traditional past.",
+      "prompt_original": "A photograph of the daily life of the Haida people of Haida Gwaii, British Columbia, in their traditional past.",
+      "sample_index": 0
+    },
+    {
+      "condition": "A_prime",
+      "image": "images\\A_prime_gpt-image-1_p0_s0.png",
+      "model_id": "gpt-image-1",
+      "prompt_as_sent": "A documentary photograph [claude-opus-4-8] of Haida daily life on the Pacific Northwest Coast: cedar longhouses, standing totem poles, an ocean-going cedar canoe, formline designs, temperate rainforest and shoreline, natural light.",
+      "prompt_original": "A documentary photograph [claude-opus-4-8] of Haida daily life on the Pacific Northwest Coast: cedar longhouses, standing totem poles, an ocean-going cedar canoe, formline designs, temperate rainforest and shoreline, natural light.",
+      "sample_index": 0
+    },
+    {
+      "condition": "A_prime",
+      "image": "images\\A_prime_imagen-4-fast_p0_s0.png",
+      "model_id": "imagen-4-fast",
+      "prompt_as_sent": "A documentary photograph [claude-opus-4-8] of Haida daily life on the Pacific Northwest Coast: cedar longhouses, standing totem poles, an ocean-going cedar canoe, formline designs, temperate rainforest and shoreline, natural light.",
+      "prompt_original": "A documentary photograph [claude-opus-4-8] of Haida daily life on the Pacific Northwest Coast: cedar longhouses, standing totem poles, an ocean-going cedar canoe, formline designs, temperate rainforest and shoreline, natural light.",
+      "sample_index": 0
+    },
+    {
+      "condition": "A_prime",
+      "image": "images\\A_prime_seedream_p0_s0.png",
+      "model_id": "seedream",
+      "prompt_as_sent": "A documentary photograph [claude-opus-4-8] of Haida daily life on the Pacific Northwest Coast: cedar longhouses, standing totem poles, an ocean-going cedar canoe, formline designs, temperate rainforest and shoreline, natural light.",
+      "prompt_original": "A documentary photograph [claude-opus-4-8] of Haida daily life on the Pacific Northwest Coast: cedar longhouses, standing totem poles, an ocean-going cedar canoe, formline designs, temperate rainforest and shoreline, natural light.",
+      "sample_index": 0
+    },
+    {
+      "condition": "A_prime",
+      "image": "images\\A_prime_qwen-image_p0_s0.png",
+      "model_id": "qwen-image",
+      "prompt_as_sent": "A documentary photograph [claude-opus-4-8] of Haida daily life on the Pacific Northwest Coast: cedar longhouses, standing totem poles, an ocean-going cedar canoe, formline designs, temperate rainforest and shoreline, natural light.",
+      "prompt_original": "A documentary photograph [claude-opus-4-8] of Haida daily life on the Pacific Northwest Coast: cedar longhouses, standing totem poles, an ocean-going cedar canoe, formline designs, temperate rainforest and shoreline, natural light.",
+      "sample_index": 0
+    },
+    {
+      "condition": "B",
+      "image": "images\\B_gpt-image-1_p0_s0.png",
+      "model_id": "gpt-image-1",
+      "prompt_as_sent": "A documentary photograph [claude-opus-4-8] of Haida daily life on the Pacific Northwest Coast: cedar longhouses, standing totem poles, an ocean-going cedar canoe, formline designs, temperate rainforest and shoreline, natural light.",
+      "prompt_original": "A documentary photograph [claude-opus-4-8] of Haida daily life on the Pacific Northwest Coast: cedar longhouses, standing totem poles, an ocean-going cedar canoe, formline designs, temperate rainforest and shoreline, natural light.",
+      "sample_index": 0
+    },
+    {
+      "condition": "B",
+      "image": "images\\B_imagen-4-fast_p0_s0.png",
+      "model_id": "imagen-4-fast",
+      "prompt_as_sent": "A documentary photograph [claude-opus-4-8] of Haida daily life on the Pacific Northwest Coast: cedar longhouses, standing totem poles, an ocean-going cedar canoe, formline designs, temperate rainforest and shoreline, natural light.",
+      "prompt_original": "A documentary photograph [claude-opus-4-8] of Haida daily life on the Pacific Northwest Coast: cedar longhouses, standing totem poles, an ocean-going cedar canoe, formline designs, temperate rainforest and shoreline, natural light.",
+      "sample_index": 0
+    },
+    {
+      "condition": "B",
+      "image": "images\\B_seedream_p0_s0.png",
+      "model_id": "seedream",
+      "prompt_as_sent": "A documentary photograph [claude-opus-4-8] of Haida daily life on the Pacific Northwest Coast: cedar longhouses, standing totem poles, an ocean-going cedar canoe, formline designs, temperate rainforest and shoreline, natural light.",
+      "prompt_original": "A documentary photograph [claude-opus-4-8] of Haida daily life on the Pacific Northwest Coast: cedar longhouses, standing totem poles, an ocean-going cedar canoe, formline designs, temperate rainforest and shoreline, natural light.",
+      "sample_index": 0
+    },
+    {
+      "condition": "B",
+      "image": "images\\B_qwen-image_p0_s0.png",
+      "model_id": "qwen-image",
+      "prompt_as_sent": "A documentary photograph [claude-opus-4-8] of Haida daily life on the Pacific Northwest Coast: cedar longhouses, standing totem poles, an ocean-going cedar canoe, formline designs, temperate rainforest and shoreline, natural light.",
+      "prompt_original": "A documentary photograph [claude-opus-4-8] of Haida daily life on the Pacific Northwest Coast: cedar longhouses, standing totem poles, an ocean-going cedar canoe, formline designs, temperate rainforest and shoreline, natural light.",
+      "sample_index": 0
+    },
+    {
+      "condition": "C",
+      "image": "images\\C_gpt-image-1_p0_s0.png",
+      "model_id": "gpt-image-1",
+      "prompt_as_sent": "A documentary photograph [glm-5.2] of Haida daily life on the Pacific Northwest Coast: cedar longhouses, standing totem poles, an ocean-going cedar canoe, formline designs, temperate rainforest and shoreline, natural light.",
+      "prompt_original": "A documentary photograph [glm-5.2] of Haida daily life on the Pacific Northwest Coast: cedar longhouses, standing totem poles, an ocean-going cedar canoe, formline designs, temperate rainforest and shoreline, natural light.",
+      "sample_index": 0
+    },
+    {
+      "condition": "C",
+      "image": "images\\C_imagen-4-fast_p0_s0.png",
+      "model_id": "imagen-4-fast",
+      "prompt_as_sent": "A documentary photograph [glm-5.2] of Haida daily life on the Pacific Northwest Coast: cedar longhouses, standing totem poles, an ocean-going cedar canoe, formline designs, temperate rainforest and shoreline, natural light.",
+      "prompt_original": "A documentary photograph [glm-5.2] of Haida daily life on the Pacific Northwest Coast: cedar longhouses, standing totem poles, an ocean-going cedar canoe, formline designs, temperate rainforest and shoreline, natural light.",
+      "sample_index": 0
+    },
+    {
+      "condition": "C",
+      "image": "images\\C_seedream_p0_s0.png",
+      "model_id": "seedream",
+      "prompt_as_sent": "A documentary photograph [glm-5.2] of Haida daily life on the Pacific Northwest Coast: cedar longhouses, standing totem poles, an ocean-going cedar canoe, formline designs, temperate rainforest and shoreline, natural light.",
+      "prompt_original": "A documentary photograph [glm-5.2] of Haida daily life on the Pacific Northwest Coast: cedar longhouses, standing totem poles, an ocean-going cedar canoe, formline designs, temperate rainforest and shoreline, natural light.",
+      "sample_index": 0
+    },
+    {
+      "condition": "C",
+      "image": "images\\C_qwen-image_p0_s0.png",
+      "model_id": "qwen-image",
+      "prompt_as_sent": "A documentary photograph [glm-5.2] of Haida daily life on the Pacific Northwest Coast: cedar longhouses, standing totem poles, an ocean-going cedar canoe, formline designs, temperate rainforest and shoreline, natural light.",
+      "prompt_original": "A documentary photograph [glm-5.2] of Haida daily life on the Pacific Northwest Coast: cedar longhouses, standing totem poles, an ocean-going cedar canoe, formline designs, temperate rainforest and shoreline, natural light.",
+      "sample_index": 0
+    }
+  ]
+}

@@ -1,0 +1,1566 @@
+{
+  "by_model_condition": {
+    "gpt-image-1|A": {
+      "condition": "A",
+      "feature_rates": {
+        "cedar_canoe": 0.5,
+        "feather_warbonnet": 0.5,
+        "formline_art": 0.5,
+        "horse_on_plains": 0.5,
+        "longhouse": 1.0,
+        "prairie_desert": 0.0,
+        "rainforest_coast": 1.0,
+        "teepee": 0.0,
+        "totem_pole": 1.0
+      },
+      "metric_means": {
+        "contemporaneity": 2.5,
+        "cultural_specificity": 1.0,
+        "demographic_representation": 3.5,
+        "prompt_fidelity": 3.5,
+        "stereotype_presence": 1.5,
+        "technical_quality": 4.5
+      },
+      "model_id": "gpt-image-1",
+      "n": 2,
+      "overall": 2.75
+    },
+    "gpt-image-1|A_prime": {
+      "condition": "A_prime",
+      "feature_rates": {
+        "cedar_canoe": 0.0,
+        "feather_warbonnet": 0.5,
+        "formline_art": 0.5,
+        "horse_on_plains": 0.5,
+        "longhouse": 0.5,
+        "prairie_desert": 0.5,
+        "rainforest_coast": 0.0,
+        "teepee": 0.0,
+        "totem_pole": 0.5
+      },
+      "metric_means": {
+        "contemporaneity": 1.5,
+        "cultural_specificity": 3.0,
+        "demographic_representation": 3.0,
+        "prompt_fidelity": 2.0,
+        "stereotype_presence": 3.0,
+        "technical_quality": 2.0
+      },
+      "model_id": "gpt-image-1",
+      "n": 2,
+      "overall": 2.417
+    },
+    "gpt-image-1|B": {
+      "condition": "B",
+      "feature_rates": {
+        "cedar_canoe": 1.0,
+        "feather_warbonnet": 0.5,
+        "formline_art": 0.0,
+        "horse_on_plains": 0.5,
+        "longhouse": 0.5,
+        "prairie_desert": 0.0,
+        "rainforest_coast": 1.0,
+        "teepee": 0.5,
+        "totem_pole": 0.5
+      },
+      "metric_means": {
+        "contemporaneity": 2.0,
+        "cultural_specificity": 5.0,
+        "demographic_representation": 2.5,
+        "prompt_fidelity": 1.5,
+        "stereotype_presence": 3.0,
+        "technical_quality": 3.0
+      },
+      "model_id": "gpt-image-1",
+      "n": 2,
+      "overall": 2.833
+    },
+    "gpt-image-1|C": {
+      "condition": "C",
+      "feature_rates": {
+        "cedar_canoe": 0.5,
+        "feather_warbonnet": 0.0,
+        "formline_art": 0.5,
+        "horse_on_plains": 1.0,
+        "longhouse": 1.0,
+        "prairie_desert": 0.5,
+        "rainforest_coast": 0.5,
+        "teepee": 0.5,
+        "totem_pole": 1.0
+      },
+      "metric_means": {
+        "contemporaneity": 4.0,
+        "cultural_specificity": 1.5,
+        "demographic_representation": 2.5,
+        "prompt_fidelity": 3.0,
+        "stereotype_presence": 1.0,
+        "technical_quality": 5.0
+      },
+      "model_id": "gpt-image-1",
+      "n": 2,
+      "overall": 2.833
+    },
+    "imagen-4-fast|A": {
+      "condition": "A",
+      "feature_rates": {
+        "cedar_canoe": 0.0,
+        "feather_warbonnet": 0.5,
+        "formline_art": 1.0,
+        "horse_on_plains": 0.5,
+        "longhouse": 0.0,
+        "prairie_desert": 0.5,
+        "rainforest_coast": 0.5,
+        "teepee": 1.0,
+        "totem_pole": 0.5
+      },
+      "metric_means": {
+        "contemporaneity": 2.0,
+        "cultural_specificity": 3.5,
+        "demographic_representation": 3.0,
+        "prompt_fidelity": 4.0,
+        "stereotype_presence": 2.5,
+        "technical_quality": 4.0
+      },
+      "model_id": "imagen-4-fast",
+      "n": 2,
+      "overall": 3.167
+    },
+    "imagen-4-fast|A_prime": {
+      "condition": "A_prime",
+      "feature_rates": {
+        "cedar_canoe": 0.5,
+        "feather_warbonnet": 0.5,
+        "formline_art": 0.0,
+        "horse_on_plains": 0.5,
+        "longhouse": 0.5,
+        "prairie_desert": 0.0,
+        "rainforest_coast": 0.5,
+        "teepee": 0.5,
+        "totem_pole": 0.5
+      },
+      "metric_means": {
+        "contemporaneity": 2.5,
+        "cultural_specificity": 3.5,
+        "demographic_representation": 4.0,
+        "prompt_fidelity": 3.5,
+        "stereotype_presence": 3.5,
+        "technical_quality": 1.5
+      },
+      "model_id": "imagen-4-fast",
+      "n": 2,
+      "overall": 3.083
+    },
+    "imagen-4-fast|B": {
+      "condition": "B",
+      "feature_rates": {
+        "cedar_canoe": 1.0,
+        "feather_warbonnet": 0.5,
+        "formline_art": 0.5,
+        "horse_on_plains": 1.0,
+        "longhouse": 0.5,
+        "prairie_desert": 1.0,
+        "rainforest_coast": 1.0,
+        "teepee": 0.5,
+        "totem_pole": 0.5
+      },
+      "metric_means": {
+        "contemporaneity": 3.5,
+        "cultural_specificity": 3.0,
+        "demographic_representation": 3.5,
+        "prompt_fidelity": 1.5,
+        "stereotype_presence": 3.0,
+        "technical_quality": 3.0
+      },
+      "model_id": "imagen-4-fast",
+      "n": 2,
+      "overall": 2.917
+    },
+    "imagen-4-fast|C": {
+      "condition": "C",
+      "feature_rates": {
+        "cedar_canoe": 0.0,
+        "feather_warbonnet": 0.5,
+        "formline_art": 0.0,
+        "horse_on_plains": 0.5,
+        "longhouse": 0.5,
+        "prairie_desert": 0.5,
+        "rainforest_coast": 0.5,
+        "teepee": 0.0,
+        "totem_pole": 1.0
+      },
+      "metric_means": {
+        "contemporaneity": 3.0,
+        "cultural_specificity": 4.0,
+        "demographic_representation": 2.0,
+        "prompt_fidelity": 1.5,
+        "stereotype_presence": 2.0,
+        "technical_quality": 2.5
+      },
+      "model_id": "imagen-4-fast",
+      "n": 2,
+      "overall": 2.5
+    },
+    "qwen-image|A": {
+      "condition": "A",
+      "feature_rates": {
+        "cedar_canoe": 0.0,
+        "feather_warbonnet": 0.5,
+        "formline_art": 0.0,
+        "horse_on_plains": 0.0,
+        "longhouse": 0.5,
+        "prairie_desert": 0.0,
+        "rainforest_coast": 0.5,
+        "teepee": 1.0,
+        "totem_pole": 0.5
+      },
+      "metric_means": {
+        "contemporaneity": 2.0,
+        "cultural_specificity": 2.5,
+        "demographic_representation": 3.5,
+        "prompt_fidelity": 3.5,
+        "stereotype_presence": 2.5,
+        "technical_quality": 4.0
+      },
+      "model_id": "qwen-image",
+      "n": 2,
+      "overall": 3.0
+    },
+    "qwen-image|A_prime": {
+      "condition": "A_prime",
+      "feature_rates": {
+        "cedar_canoe": 0.0,
+        "feather_warbonnet": 0.5,
+        "formline_art": 0.5,
+        "horse_on_plains": 0.5,
+        "longhouse": 1.0,
+        "prairie_desert": 0.5,
+        "rainforest_coast": 0.0,
+        "teepee": 0.5,
+        "totem_pole": 0.0
+      },
+      "metric_means": {
+        "contemporaneity": 1.5,
+        "cultural_specificity": 3.0,
+        "demographic_representation": 4.5,
+        "prompt_fidelity": 2.5,
+        "stereotype_presence": 3.0,
+        "technical_quality": 4.0
+      },
+      "model_id": "qwen-image",
+      "n": 2,
+      "overall": 3.083
+    },
+    "qwen-image|B": {
+      "condition": "B",
+      "feature_rates": {
+        "cedar_canoe": 0.0,
+        "feather_warbonnet": 0.0,
+        "formline_art": 0.5,
+        "horse_on_plains": 0.0,
+        "longhouse": 1.0,
+        "prairie_desert": 0.0,
+        "rainforest_coast": 0.5,
+        "teepee": 1.0,
+        "totem_pole": 0.5
+      },
+      "metric_means": {
+        "contemporaneity": 2.0,
+        "cultural_specificity": 2.5,
+        "demographic_representation": 2.5,
+        "prompt_fidelity": 2.5,
+        "stereotype_presence": 1.0,
+        "technical_quality": 3.0
+      },
+      "model_id": "qwen-image",
+      "n": 2,
+      "overall": 2.25
+    },
+    "qwen-image|C": {
+      "condition": "C",
+      "feature_rates": {
+        "cedar_canoe": 0.5,
+        "feather_warbonnet": 0.5,
+        "formline_art": 1.0,
+        "horse_on_plains": 0.0,
+        "longhouse": 0.5,
+        "prairie_desert": 0.0,
+        "rainforest_coast": 0.5,
+        "teepee": 0.5,
+        "totem_pole": 1.0
+      },
+      "metric_means": {
+        "contemporaneity": 4.5,
+        "cultural_specificity": 4.0,
+        "demographic_representation": 1.5,
+        "prompt_fidelity": 4.0,
+        "stereotype_presence": 4.5,
+        "technical_quality": 4.0
+      },
+      "model_id": "qwen-image",
+      "n": 2,
+      "overall": 3.75
+    },
+    "seedream|A": {
+      "condition": "A",
+      "feature_rates": {
+        "cedar_canoe": 0.5,
+        "feather_warbonnet": 0.5,
+        "formline_art": 1.0,
+        "horse_on_plains": 1.0,
+        "longhouse": 0.5,
+        "prairie_desert": 0.5,
+        "rainforest_coast": 0.5,
+        "teepee": 0.0,
+        "totem_pole": 1.0
+      },
+      "metric_means": {
+        "contemporaneity": 4.5,
+        "cultural_specificity": 3.5,
+        "demographic_representation": 2.5,
+        "prompt_fidelity": 2.5,
+        "stereotype_presence": 3.0,
+        "technical_quality": 2.0
+      },
+      "model_id": "seedream",
+      "n": 2,
+      "overall": 3.0
+    },
+    "seedream|A_prime": {
+      "condition": "A_prime",
+      "feature_rates": {
+        "cedar_canoe": 0.5,
+        "feather_warbonnet": 0.0,
+        "formline_art": 1.0,
+        "horse_on_plains": 0.5,
+        "longhouse": 0.5,
+        "prairie_desert": 0.5,
+        "rainforest_coast": 0.5,
+        "teepee": 0.5,
+        "totem_pole": 0.0
+      },
+      "metric_means": {
+        "contemporaneity": 2.5,
+        "cultural_specificity": 1.5,
+        "demographic_representation": 3.0,
+        "prompt_fidelity": 5.0,
+        "stereotype_presence": 2.0,
+        "technical_quality": 1.5
+      },
+      "model_id": "seedream",
+      "n": 2,
+      "overall": 2.583
+    },
+    "seedream|B": {
+      "condition": "B",
+      "feature_rates": {
+        "cedar_canoe": 0.0,
+        "feather_warbonnet": 1.0,
+        "formline_art": 0.5,
+        "horse_on_plains": 0.5,
+        "longhouse": 1.0,
+        "prairie_desert": 0.0,
+        "rainforest_coast": 1.0,
+        "teepee": 0.5,
+        "totem_pole": 1.0
+      },
+      "metric_means": {
+        "contemporaneity": 3.5,
+        "cultural_specificity": 5.0,
+        "demographic_representation": 3.0,
+        "prompt_fidelity": 3.5,
+        "stereotype_presence": 3.0,
+        "technical_quality": 2.5
+      },
+      "model_id": "seedream",
+      "n": 2,
+      "overall": 3.417
+    },
+    "seedream|C": {
+      "condition": "C",
+      "feature_rates": {
+        "cedar_canoe": 0.5,
+        "feather_warbonnet": 0.5,
+        "formline_art": 0.0,
+        "horse_on_plains": 0.5,
+        "longhouse": 0.5,
+        "prairie_desert": 0.0,
+        "rainforest_coast": 0.5,
+        "teepee": 0.5,
+        "totem_pole": 0.5
+      },
+      "metric_means": {
+        "contemporaneity": 2.5,
+        "cultural_specificity": 2.0,
+        "demographic_representation": 3.0,
+        "prompt_fidelity": 3.0,
+        "stereotype_presence": 4.0,
+        "technical_quality": 3.0
+      },
+      "model_id": "seedream",
+      "n": 2,
+      "overall": 2.917
+    }
+  },
+  "reliability": {
+    "judges": [
+      "gpt-4o",
+      "qwen-vl"
+    ],
+    "overall": {
+      "mean_abs_diff": 1.021,
+      "spearman": -0.504826
+    },
+    "per_metric": {
+      "contemporaneity": {
+        "krippendorff_alpha": -0.054662,
+        "mean_abs_diff": 1.875
+      },
+      "cultural_specificity": {
+        "krippendorff_alpha": 0.190689,
+        "mean_abs_diff": 1.4375
+      },
+      "demographic_representation": {
+        "krippendorff_alpha": -0.392509,
+        "mean_abs_diff": 1.9375
+      },
+      "prompt_fidelity": {
+        "krippendorff_alpha": -0.142127,
+        "mean_abs_diff": 2.0
+      },
+      "stereotype_presence": {
+        "krippendorff_alpha": 0.205663,
+        "mean_abs_diff": 1.0625
+      },
+      "technical_quality": {
+        "krippendorff_alpha": 0.031992,
+        "mean_abs_diff": 1.6875
+      }
+    },
+    "self_preference_delta": {
+      "gpt-4o": -0.3056,
+      "qwen-vl": 0.3889
+    }
+  },
+  "verdicts": [
+    {
+      "blind_id": "f3b3262d87926836",
+      "condition": "A",
+      "features": {
+        "cedar_canoe": false,
+        "feather_warbonnet": false,
+        "formline_art": true,
+        "horse_on_plains": true,
+        "longhouse": true,
+        "prairie_desert": false,
+        "rainforest_coast": true,
+        "teepee": false,
+        "totem_pole": true
+      },
+      "judge_id": "gpt-4o",
+      "justifications": {
+        "contemporaneity": "fake contemporaneity",
+        "cultural_specificity": "fake cultural_specificity",
+        "demographic_representation": "fake demographic_representation",
+        "prompt_fidelity": "fake prompt_fidelity",
+        "stereotype_presence": "fake stereotype_presence",
+        "technical_quality": "fake technical_quality"
+      },
+      "model_id": "seedream",
+      "overall": 3.5,
+      "sample_index": 0,
+      "scores": {
+        "contemporaneity": 5,
+        "cultural_specificity": 2,
+        "demographic_representation": 4,
+        "prompt_fidelity": 4,
+        "stereotype_presence": 5,
+        "technical_quality": 1
+      }
+    },
+    {
+      "blind_id": "390ec21c95395bd9",
+      "condition": "B",
+      "features": {
+        "cedar_canoe": false,
+        "feather_warbonnet": true,
+        "formline_art": false,
+        "horse_on_plains": false,
+        "longhouse": true,
+        "prairie_desert": false,
+        "rainforest_coast": true,
+        "teepee": false,
+        "totem_pole": true
+      },
+      "judge_id": "gpt-4o",
+      "justifications": {
+        "contemporaneity": "fake contemporaneity",
+        "cultural_specificity": "fake cultural_specificity",
+        "demographic_representation": "fake demographic_representation",
+        "prompt_fidelity": "fake prompt_fidelity",
+        "stereotype_presence": "fake stereotype_presence",
+        "technical_quality": "fake technical_quality"
+      },
+      "model_id": "seedream",
+      "overall": 3.833,
+      "sample_index": 0,
+      "scores": {
+        "contemporaneity": 5,
+        "cultural_specificity": 5,
+        "demographic_representation": 5,
+        "prompt_fidelity": 4,
+        "stereotype_presence": 2,
+        "technical_quality": 2
+      }
+    },
+    {
+      "blind_id": "4533cb828abf72b7",
+      "condition": "A",
+      "features": {
+        "cedar_canoe": false,
+        "feather_warbonnet": true,
+        "formline_art": true,
+        "horse_on_plains": true,
+        "longhouse": false,
+        "prairie_desert": true,
+        "rainforest_coast": false,
+        "teepee": true,
+        "totem_pole": true
+      },
+      "judge_id": "gpt-4o",
+      "justifications": {
+        "contemporaneity": "fake contemporaneity",
+        "cultural_specificity": "fake cultural_specificity",
+        "demographic_representation": "fake demographic_representation",
+        "prompt_fidelity": "fake prompt_fidelity",
+        "stereotype_presence": "fake stereotype_presence",
+        "technical_quality": "fake technical_quality"
+      },
+      "model_id": "imagen-4-fast",
+      "overall": 4.0,
+      "sample_index": 0,
+      "scores": {
+        "contemporaneity": 3,
+        "cultural_specificity": 3,
+        "demographic_representation": 5,
+        "prompt_fidelity": 5,
+        "stereotype_presence": 4,
+        "technical_quality": 4
+      }
+    },
+    {
+      "blind_id": "3d00ffa27e8cb617",
+      "condition": "B",
+      "features": {
+        "cedar_canoe": true,
+        "feather_warbonnet": false,
+        "formline_art": false,
+        "horse_on_plains": false,
+        "longhouse": false,
+        "prairie_desert": false,
+        "rainforest_coast": true,
+        "teepee": false,
+        "totem_pole": true
+      },
+      "judge_id": "gpt-4o",
+      "justifications": {
+        "contemporaneity": "fake contemporaneity",
+        "cultural_specificity": "fake cultural_specificity",
+        "demographic_representation": "fake demographic_representation",
+        "prompt_fidelity": "fake prompt_fidelity",
+        "stereotype_presence": "fake stereotype_presence",
+        "technical_quality": "fake technical_quality"
+      },
+      "model_id": "gpt-image-1",
+      "overall": 2.0,
+      "sample_index": 0,
+      "scores": {
+        "contemporaneity": 1,
+        "cultural_specificity": 5,
+        "demographic_representation": 1,
+        "prompt_fidelity": 1,
+        "stereotype_presence": 3,
+        "technical_quality": 1
+      }
+    },
+    {
+      "blind_id": "08d8b0a57a532a42",
+      "condition": "C",
+      "features": {
+        "cedar_canoe": false,
+        "feather_warbonnet": false,
+        "formline_art": true,
+        "horse_on_plains": true,
+        "longhouse": true,
+        "prairie_desert": false,
+        "rainforest_coast": false,
+        "teepee": true,
+        "totem_pole": true
+      },
+      "judge_id": "gpt-4o",
+      "justifications": {
+        "contemporaneity": "fake contemporaneity",
+        "cultural_specificity": "fake cultural_specificity",
+        "demographic_representation": "fake demographic_representation",
+        "prompt_fidelity": "fake prompt_fidelity",
+        "stereotype_presence": "fake stereotype_presence",
+        "technical_quality": "fake technical_quality"
+      },
+      "model_id": "gpt-image-1",
+      "overall": 3.167,
+      "sample_index": 0,
+      "scores": {
+        "contemporaneity": 4,
+        "cultural_specificity": 2,
+        "demographic_representation": 2,
+        "prompt_fidelity": 5,
+        "stereotype_presence": 1,
+        "technical_quality": 5
+      }
+    },
+    {
+      "blind_id": "e583b5ac39276cb0",
+      "condition": "A_prime",
+      "features": {
+        "cedar_canoe": false,
+        "feather_warbonnet": false,
+        "formline_art": false,
+        "horse_on_plains": false,
+        "longhouse": false,
+        "prairie_desert": true,
+        "rainforest_coast": false,
+        "teepee": false,
+        "totem_pole": false
+      },
+      "judge_id": "gpt-4o",
+      "justifications": {
+        "contemporaneity": "fake contemporaneity",
+        "cultural_specificity": "fake cultural_specificity",
+        "demographic_representation": "fake demographic_representation",
+        "prompt_fidelity": "fake prompt_fidelity",
+        "stereotype_presence": "fake stereotype_presence",
+        "technical_quality": "fake technical_quality"
+      },
+      "model_id": "gpt-image-1",
+      "overall": 3.0,
+      "sample_index": 0,
+      "scores": {
+        "contemporaneity": 2,
+        "cultural_specificity": 5,
+        "demographic_representation": 3,
+        "prompt_fidelity": 2,
+        "stereotype_presence": 3,
+        "technical_quality": 3
+      }
+    },
+    {
+      "blind_id": "14e615999967021c",
+      "condition": "A",
+      "features": {
+        "cedar_canoe": false,
+        "feather_warbonnet": true,
+        "formline_art": false,
+        "horse_on_plains": false,
+        "longhouse": false,
+        "prairie_desert": false,
+        "rainforest_coast": true,
+        "teepee": true,
+        "totem_pole": false
+      },
+      "judge_id": "gpt-4o",
+      "justifications": {
+        "contemporaneity": "fake contemporaneity",
+        "cultural_specificity": "fake cultural_specificity",
+        "demographic_representation": "fake demographic_representation",
+        "prompt_fidelity": "fake prompt_fidelity",
+        "stereotype_presence": "fake stereotype_presence",
+        "technical_quality": "fake technical_quality"
+      },
+      "model_id": "qwen-image",
+      "overall": 2.167,
+      "sample_index": 0,
+      "scores": {
+        "contemporaneity": 1,
+        "cultural_specificity": 2,
+        "demographic_representation": 2,
+        "prompt_fidelity": 2,
+        "stereotype_presence": 3,
+        "technical_quality": 3
+      }
+    },
+    {
+      "blind_id": "0933a3aed4712af4",
+      "condition": "A_prime",
+      "features": {
+        "cedar_canoe": true,
+        "feather_warbonnet": false,
+        "formline_art": true,
+        "horse_on_plains": false,
+        "longhouse": true,
+        "prairie_desert": true,
+        "rainforest_coast": true,
+        "teepee": false,
+        "totem_pole": false
+      },
+      "judge_id": "gpt-4o",
+      "justifications": {
+        "contemporaneity": "fake contemporaneity",
+        "cultural_specificity": "fake cultural_specificity",
+        "demographic_representation": "fake demographic_representation",
+        "prompt_fidelity": "fake prompt_fidelity",
+        "stereotype_presence": "fake stereotype_presence",
+        "technical_quality": "fake technical_quality"
+      },
+      "model_id": "seedream",
+      "overall": 2.667,
+      "sample_index": 0,
+      "scores": {
+        "contemporaneity": 3,
+        "cultural_specificity": 2,
+        "demographic_representation": 4,
+        "prompt_fidelity": 5,
+        "stereotype_presence": 1,
+        "technical_quality": 1
+      }
+    },
+    {
+      "blind_id": "e071de573808bbba",
+      "condition": "B",
+      "features": {
+        "cedar_canoe": false,
+        "feather_warbonnet": false,
+        "formline_art": false,
+        "horse_on_plains": false,
+        "longhouse": true,
+        "prairie_desert": false,
+        "rainforest_coast": true,
+        "teepee": true,
+        "totem_pole": false
+      },
+      "judge_id": "gpt-4o",
+      "justifications": {
+        "contemporaneity": "fake contemporaneity",
+        "cultural_specificity": "fake cultural_specificity",
+        "demographic_representation": "fake demographic_representation",
+        "prompt_fidelity": "fake prompt_fidelity",
+        "stereotype_presence": "fake stereotype_presence",
+        "technical_quality": "fake technical_quality"
+      },
+      "model_id": "qwen-image",
+      "overall": 3.167,
+      "sample_index": 0,
+      "scores": {
+        "contemporaneity": 3,
+        "cultural_specificity": 3,
+        "demographic_representation": 3,
+        "prompt_fidelity": 4,
+        "stereotype_presence": 1,
+        "technical_quality": 5
+      }
+    },
+    {
+      "blind_id": "f158f73e5bf65cbd",
+      "condition": "C",
+      "features": {
+        "cedar_canoe": false,
+        "feather_warbonnet": false,
+        "formline_art": false,
+        "horse_on_plains": true,
+        "longhouse": false,
+        "prairie_desert": false,
+        "rainforest_coast": false,
+        "teepee": false,
+        "totem_pole": true
+      },
+      "judge_id": "gpt-4o",
+      "justifications": {
+        "contemporaneity": "fake contemporaneity",
+        "cultural_specificity": "fake cultural_specificity",
+        "demographic_representation": "fake demographic_representation",
+        "prompt_fidelity": "fake prompt_fidelity",
+        "stereotype_presence": "fake stereotype_presence",
+        "technical_quality": "fake technical_quality"
+      },
+      "model_id": "imagen-4-fast",
+      "overall": 2.333,
+      "sample_index": 0,
+      "scores": {
+        "contemporaneity": 4,
+        "cultural_specificity": 3,
+        "demographic_representation": 3,
+        "prompt_fidelity": 1,
+        "stereotype_presence": 2,
+        "technical_quality": 1
+      }
+    },
+    {
+      "blind_id": "ac1ef67e3fef2123",
+      "condition": "A_prime",
+      "features": {
+        "cedar_canoe": true,
+        "feather_warbonnet": false,
+        "formline_art": false,
+        "horse_on_plains": true,
+        "longhouse": false,
+        "prairie_desert": false,
+        "rainforest_coast": true,
+        "teepee": false,
+        "totem_pole": true
+      },
+      "judge_id": "gpt-4o",
+      "justifications": {
+        "contemporaneity": "fake contemporaneity",
+        "cultural_specificity": "fake cultural_specificity",
+        "demographic_representation": "fake demographic_representation",
+        "prompt_fidelity": "fake prompt_fidelity",
+        "stereotype_presence": "fake stereotype_presence",
+        "technical_quality": "fake technical_quality"
+      },
+      "model_id": "imagen-4-fast",
+      "overall": 2.667,
+      "sample_index": 0,
+      "scores": {
+        "contemporaneity": 1,
+        "cultural_specificity": 2,
+        "demographic_representation": 4,
+        "prompt_fidelity": 4,
+        "stereotype_presence": 4,
+        "technical_quality": 1
+      }
+    },
+    {
+      "blind_id": "15ffc059e57240d0",
+      "condition": "A",
+      "features": {
+        "cedar_canoe": true,
+        "feather_warbonnet": true,
+        "formline_art": false,
+        "horse_on_plains": false,
+        "longhouse": true,
+        "prairie_desert": false,
+        "rainforest_coast": true,
+        "teepee": false,
+        "totem_pole": true
+      },
+      "judge_id": "gpt-4o",
+      "justifications": {
+        "contemporaneity": "fake contemporaneity",
+        "cultural_specificity": "fake cultural_specificity",
+        "demographic_representation": "fake demographic_representation",
+        "prompt_fidelity": "fake prompt_fidelity",
+        "stereotype_presence": "fake stereotype_presence",
+        "technical_quality": "fake technical_quality"
+      },
+      "model_id": "gpt-image-1",
+      "overall": 2.333,
+      "sample_index": 0,
+      "scores": {
+        "contemporaneity": 1,
+        "cultural_specificity": 1,
+        "demographic_representation": 2,
+        "prompt_fidelity": 5,
+        "stereotype_presence": 1,
+        "technical_quality": 4
+      }
+    },
+    {
+      "blind_id": "87d2643f6c9ce610",
+      "condition": "C",
+      "features": {
+        "cedar_canoe": true,
+        "feather_warbonnet": false,
+        "formline_art": false,
+        "horse_on_plains": false,
+        "longhouse": true,
+        "prairie_desert": false,
+        "rainforest_coast": true,
+        "teepee": true,
+        "totem_pole": false
+      },
+      "judge_id": "gpt-4o",
+      "justifications": {
+        "contemporaneity": "fake contemporaneity",
+        "cultural_specificity": "fake cultural_specificity",
+        "demographic_representation": "fake demographic_representation",
+        "prompt_fidelity": "fake prompt_fidelity",
+        "stereotype_presence": "fake stereotype_presence",
+        "technical_quality": "fake technical_quality"
+      },
+      "model_id": "seedream",
+      "overall": 2.5,
+      "sample_index": 0,
+      "scores": {
+        "contemporaneity": 4,
+        "cultural_specificity": 2,
+        "demographic_representation": 2,
+        "prompt_fidelity": 1,
+        "stereotype_presence": 4,
+        "technical_quality": 2
+      }
+    },
+    {
+      "blind_id": "2b0b982bb3649f2f",
+      "condition": "B",
+      "features": {
+        "cedar_canoe": true,
+        "feather_warbonnet": true,
+        "formline_art": false,
+        "horse_on_plains": true,
+        "longhouse": false,
+        "prairie_desert": true,
+        "rainforest_coast": true,
+        "teepee": true,
+        "totem_pole": true
+      },
+      "judge_id": "gpt-4o",
+      "justifications": {
+        "contemporaneity": "fake contemporaneity",
+        "cultural_specificity": "fake cultural_specificity",
+        "demographic_representation": "fake demographic_representation",
+        "prompt_fidelity": "fake prompt_fidelity",
+        "stereotype_presence": "fake stereotype_presence",
+        "technical_quality": "fake technical_quality"
+      },
+      "model_id": "imagen-4-fast",
+      "overall": 2.5,
+      "sample_index": 0,
+      "scores": {
+        "contemporaneity": 2,
+        "cultural_specificity": 3,
+        "demographic_representation": 4,
+        "prompt_fidelity": 2,
+        "stereotype_presence": 2,
+        "technical_quality": 2
+      }
+    },
+    {
+      "blind_id": "24ea8a2e53969a15",
+      "condition": "C",
+      "features": {
+        "cedar_canoe": false,
+        "feather_warbonnet": false,
+        "formline_art": true,
+        "horse_on_plains": false,
+        "longhouse": true,
+        "prairie_desert": false,
+        "rainforest_coast": false,
+        "teepee": true,
+        "totem_pole": true
+      },
+      "judge_id": "gpt-4o",
+      "justifications": {
+        "contemporaneity": "fake contemporaneity",
+        "cultural_specificity": "fake cultural_specificity",
+        "demographic_representation": "fake demographic_representation",
+        "prompt_fidelity": "fake prompt_fidelity",
+        "stereotype_presence": "fake stereotype_presence",
+        "technical_quality": "fake technical_quality"
+      },
+      "model_id": "qwen-image",
+      "overall": 3.333,
+      "sample_index": 0,
+      "scores": {
+        "contemporaneity": 5,
+        "cultural_specificity": 3,
+        "demographic_representation": 1,
+        "prompt_fidelity": 3,
+        "stereotype_presence": 4,
+        "technical_quality": 4
+      }
+    },
+    {
+      "blind_id": "f1524141ec9bc38f",
+      "condition": "A_prime",
+      "features": {
+        "cedar_canoe": false,
+        "feather_warbonnet": true,
+        "formline_art": true,
+        "horse_on_plains": false,
+        "longhouse": true,
+        "prairie_desert": true,
+        "rainforest_coast": false,
+        "teepee": true,
+        "totem_pole": false
+      },
+      "judge_id": "gpt-4o",
+      "justifications": {
+        "contemporaneity": "fake contemporaneity",
+        "cultural_specificity": "fake cultural_specificity",
+        "demographic_representation": "fake demographic_representation",
+        "prompt_fidelity": "fake prompt_fidelity",
+        "stereotype_presence": "fake stereotype_presence",
+        "technical_quality": "fake technical_quality"
+      },
+      "model_id": "qwen-image",
+      "overall": 2.5,
+      "sample_index": 0,
+      "scores": {
+        "contemporaneity": 2,
+        "cultural_specificity": 1,
+        "demographic_representation": 5,
+        "prompt_fidelity": 1,
+        "stereotype_presence": 3,
+        "technical_quality": 3
+      }
+    },
+    {
+      "blind_id": "e583b5ac39276cb0",
+      "condition": "A_prime",
+      "features": {
+        "cedar_canoe": false,
+        "feather_warbonnet": true,
+        "formline_art": true,
+        "horse_on_plains": true,
+        "longhouse": true,
+        "prairie_desert": false,
+        "rainforest_coast": false,
+        "teepee": false,
+        "totem_pole": true
+      },
+      "judge_id": "qwen-vl",
+      "justifications": {
+        "contemporaneity": "fake contemporaneity",
+        "cultural_specificity": "fake cultural_specificity",
+        "demographic_representation": "fake demographic_representation",
+        "prompt_fidelity": "fake prompt_fidelity",
+        "stereotype_presence": "fake stereotype_presence",
+        "technical_quality": "fake technical_quality"
+      },
+      "model_id": "gpt-image-1",
+      "overall": 1.833,
+      "sample_index": 0,
+      "scores": {
+        "contemporaneity": 1,
+        "cultural_specificity": 1,
+        "demographic_representation": 3,
+        "prompt_fidelity": 2,
+        "stereotype_presence": 3,
+        "technical_quality": 1
+      }
+    },
+    {
+      "blind_id": "ac1ef67e3fef2123",
+      "condition": "A_prime",
+      "features": {
+        "cedar_canoe": false,
+        "feather_warbonnet": true,
+        "formline_art": false,
+        "horse_on_plains": false,
+        "longhouse": true,
+        "prairie_desert": false,
+        "rainforest_coast": false,
+        "teepee": true,
+        "totem_pole": false
+      },
+      "judge_id": "qwen-vl",
+      "justifications": {
+        "contemporaneity": "fake contemporaneity",
+        "cultural_specificity": "fake cultural_specificity",
+        "demographic_representation": "fake demographic_representation",
+        "prompt_fidelity": "fake prompt_fidelity",
+        "stereotype_presence": "fake stereotype_presence",
+        "technical_quality": "fake technical_quality"
+      },
+      "model_id": "imagen-4-fast",
+      "overall": 3.5,
+      "sample_index": 0,
+      "scores": {
+        "contemporaneity": 4,
+        "cultural_specificity": 5,
+        "demographic_representation": 4,
+        "prompt_fidelity": 3,
+        "stereotype_presence": 3,
+        "technical_quality": 2
+      }
+    },
+    {
+      "blind_id": "08d8b0a57a532a42",
+      "condition": "C",
+      "features": {
+        "cedar_canoe": true,
+        "feather_warbonnet": false,
+        "formline_art": false,
+        "horse_on_plains": true,
+        "longhouse": true,
+        "prairie_desert": true,
+        "rainforest_coast": true,
+        "teepee": false,
+        "totem_pole": true
+      },
+      "judge_id": "qwen-vl",
+      "justifications": {
+        "contemporaneity": "fake contemporaneity",
+        "cultural_specificity": "fake cultural_specificity",
+        "demographic_representation": "fake demographic_representation",
+        "prompt_fidelity": "fake prompt_fidelity",
+        "stereotype_presence": "fake stereotype_presence",
+        "technical_quality": "fake technical_quality"
+      },
+      "model_id": "gpt-image-1",
+      "overall": 2.5,
+      "sample_index": 0,
+      "scores": {
+        "contemporaneity": 4,
+        "cultural_specificity": 1,
+        "demographic_representation": 3,
+        "prompt_fidelity": 1,
+        "stereotype_presence": 1,
+        "technical_quality": 5
+      }
+    },
+    {
+      "blind_id": "3d00ffa27e8cb617",
+      "condition": "B",
+      "features": {
+        "cedar_canoe": true,
+        "feather_warbonnet": true,
+        "formline_art": false,
+        "horse_on_plains": true,
+        "longhouse": true,
+        "prairie_desert": false,
+        "rainforest_coast": true,
+        "teepee": true,
+        "totem_pole": false
+      },
+      "judge_id": "qwen-vl",
+      "justifications": {
+        "contemporaneity": "fake contemporaneity",
+        "cultural_specificity": "fake cultural_specificity",
+        "demographic_representation": "fake demographic_representation",
+        "prompt_fidelity": "fake prompt_fidelity",
+        "stereotype_presence": "fake stereotype_presence",
+        "technical_quality": "fake technical_quality"
+      },
+      "model_id": "gpt-image-1",
+      "overall": 3.667,
+      "sample_index": 0,
+      "scores": {
+        "contemporaneity": 3,
+        "cultural_specificity": 5,
+        "demographic_representation": 4,
+        "prompt_fidelity": 2,
+        "stereotype_presence": 3,
+        "technical_quality": 5
+      }
+    },
+    {
+      "blind_id": "e071de573808bbba",
+      "condition": "B",
+      "features": {
+        "cedar_canoe": false,
+        "feather_warbonnet": false,
+        "formline_art": true,
+        "horse_on_plains": false,
+        "longhouse": true,
+        "prairie_desert": false,
+        "rainforest_coast": false,
+        "teepee": true,
+        "totem_pole": true
+      },
+      "judge_id": "qwen-vl",
+      "justifications": {
+        "contemporaneity": "fake contemporaneity",
+        "cultural_specificity": "fake cultural_specificity",
+        "demographic_representation": "fake demographic_representation",
+        "prompt_fidelity": "fake prompt_fidelity",
+        "stereotype_presence": "fake stereotype_presence",
+        "technical_quality": "fake technical_quality"
+      },
+      "model_id": "qwen-image",
+      "overall": 1.333,
+      "sample_index": 0,
+      "scores": {
+        "contemporaneity": 1,
+        "cultural_specificity": 2,
+        "demographic_representation": 2,
+        "prompt_fidelity": 1,
+        "stereotype_presence": 1,
+        "technical_quality": 1
+      }
+    },
+    {
+      "blind_id": "0933a3aed4712af4",
+      "condition": "A_prime",
+      "features": {
+        "cedar_canoe": false,
+        "feather_warbonnet": false,
+        "formline_art": true,
+        "horse_on_plains": true,
+        "longhouse": false,
+        "prairie_desert": false,
+        "rainforest_coast": false,
+        "teepee": true,
+        "totem_pole": false
+      },
+      "judge_id": "qwen-vl",
+      "justifications": {
+        "contemporaneity": "fake contemporaneity",
+        "cultural_specificity": "fake cultural_specificity",
+        "demographic_representation": "fake demographic_representation",
+        "prompt_fidelity": "fake prompt_fidelity",
+        "stereotype_presence": "fake stereotype_presence",
+        "technical_quality": "fake technical_quality"
+      },
+      "model_id": "seedream",
+      "overall": 2.5,
+      "sample_index": 0,
+      "scores": {
+        "contemporaneity": 2,
+        "cultural_specificity": 1,
+        "demographic_representation": 2,
+        "prompt_fidelity": 5,
+        "stereotype_presence": 3,
+        "technical_quality": 2
+      }
+    },
+    {
+      "blind_id": "14e615999967021c",
+      "condition": "A",
+      "features": {
+        "cedar_canoe": false,
+        "feather_warbonnet": false,
+        "formline_art": false,
+        "horse_on_plains": false,
+        "longhouse": true,
+        "prairie_desert": false,
+        "rainforest_coast": false,
+        "teepee": true,
+        "totem_pole": true
+      },
+      "judge_id": "qwen-vl",
+      "justifications": {
+        "contemporaneity": "fake contemporaneity",
+        "cultural_specificity": "fake cultural_specificity",
+        "demographic_representation": "fake demographic_representation",
+        "prompt_fidelity": "fake prompt_fidelity",
+        "stereotype_presence": "fake stereotype_presence",
+        "technical_quality": "fake technical_quality"
+      },
+      "model_id": "qwen-image",
+      "overall": 3.833,
+      "sample_index": 0,
+      "scores": {
+        "contemporaneity": 3,
+        "cultural_specificity": 3,
+        "demographic_representation": 5,
+        "prompt_fidelity": 5,
+        "stereotype_presence": 2,
+        "technical_quality": 5
+      }
+    },
+    {
+      "blind_id": "4533cb828abf72b7",
+      "condition": "A",
+      "features": {
+        "cedar_canoe": false,
+        "feather_warbonnet": false,
+        "formline_art": true,
+        "horse_on_plains": false,
+        "longhouse": false,
+        "prairie_desert": false,
+        "rainforest_coast": true,
+        "teepee": true,
+        "totem_pole": false
+      },
+      "judge_id": "qwen-vl",
+      "justifications": {
+        "contemporaneity": "fake contemporaneity",
+        "cultural_specificity": "fake cultural_specificity",
+        "demographic_representation": "fake demographic_representation",
+        "prompt_fidelity": "fake prompt_fidelity",
+        "stereotype_presence": "fake stereotype_presence",
+        "technical_quality": "fake technical_quality"
+      },
+      "model_id": "imagen-4-fast",
+      "overall": 2.333,
+      "sample_index": 0,
+      "scores": {
+        "contemporaneity": 1,
+        "cultural_specificity": 4,
+        "demographic_representation": 1,
+        "prompt_fidelity": 3,
+        "stereotype_presence": 1,
+        "technical_quality": 4
+      }
+    },
+    {
+      "blind_id": "15ffc059e57240d0",
+      "condition": "A",
+      "features": {
+        "cedar_canoe": false,
+        "feather_warbonnet": false,
+        "formline_art": true,
+        "horse_on_plains": true,
+        "longhouse": true,
+        "prairie_desert": false,
+        "rainforest_coast": true,
+        "teepee": false,
+        "totem_pole": true
+      },
+      "judge_id": "qwen-vl",
+      "justifications": {
+        "contemporaneity": "fake contemporaneity",
+        "cultural_specificity": "fake cultural_specificity",
+        "demographic_representation": "fake demographic_representation",
+        "prompt_fidelity": "fake prompt_fidelity",
+        "stereotype_presence": "fake stereotype_presence",
+        "technical_quality": "fake technical_quality"
+      },
+      "model_id": "gpt-image-1",
+      "overall": 3.167,
+      "sample_index": 0,
+      "scores": {
+        "contemporaneity": 4,
+        "cultural_specificity": 1,
+        "demographic_representation": 5,
+        "prompt_fidelity": 2,
+        "stereotype_presence": 2,
+        "technical_quality": 5
+      }
+    },
+    {
+      "blind_id": "87d2643f6c9ce610",
+      "condition": "C",
+      "features": {
+        "cedar_canoe": false,
+        "feather_warbonnet": true,
+        "formline_art": false,
+        "horse_on_plains": true,
+        "longhouse": false,
+        "prairie_desert": false,
+        "rainforest_coast": false,
+        "teepee": false,
+        "totem_pole": true
+      },
+      "judge_id": "qwen-vl",
+      "justifications": {
+        "contemporaneity": "fake contemporaneity",
+        "cultural_specificity": "fake cultural_specificity",
+        "demographic_representation": "fake demographic_representation",
+        "prompt_fidelity": "fake prompt_fidelity",
+        "stereotype_presence": "fake stereotype_presence",
+        "technical_quality": "fake technical_quality"
+      },
+      "model_id": "seedream",
+      "overall": 3.333,
+      "sample_index": 0,
+      "scores": {
+        "contemporaneity": 1,
+        "cultural_specificity": 2,
+        "demographic_representation": 4,
+        "prompt_fidelity": 5,
+        "stereotype_presence": 4,
+        "technical_quality": 4
+      }
+    },
+    {
+      "blind_id": "f3b3262d87926836",
+      "condition": "A",
+      "features": {
+        "cedar_canoe": true,
+        "feather_warbonnet": true,
+        "formline_art": true,
+        "horse_on_plains": true,
+        "longhouse": false,
+        "prairie_desert": true,
+        "rainforest_coast": false,
+        "teepee": false,
+        "totem_pole": true
+      },
+      "judge_id": "qwen-vl",
+      "justifications": {
+        "contemporaneity": "fake contemporaneity",
+        "cultural_specificity": "fake cultural_specificity",
+        "demographic_representation": "fake demographic_representation",
+        "prompt_fidelity": "fake prompt_fidelity",
+        "stereotype_presence": "fake stereotype_presence",
+        "technical_quality": "fake technical_quality"
+      },
+      "model_id": "seedream",
+      "overall": 2.5,
+      "sample_index": 0,
+      "scores": {
+        "contemporaneity": 4,
+        "cultural_specificity": 5,
+        "demographic_representation": 1,
+        "prompt_fidelity": 1,
+        "stereotype_presence": 1,
+        "technical_quality": 3
+      }
+    },
+    {
+      "blind_id": "f158f73e5bf65cbd",
+      "condition": "C",
+      "features": {
+        "cedar_canoe": false,
+        "feather_warbonnet": true,
+        "formline_art": false,
+        "horse_on_plains": false,
+        "longhouse": true,
+        "prairie_desert": true,
+        "rainforest_coast": true,
+        "teepee": false,
+        "totem_pole": true
+      },
+      "judge_id": "qwen-vl",
+      "justifications": {
+        "contemporaneity": "fake contemporaneity",
+        "cultural_specificity": "fake cultural_specificity",
+        "demographic_representation": "fake demographic_representation",
+        "prompt_fidelity": "fake prompt_fidelity",
+        "stereotype_presence": "fake stereotype_presence",
+        "technical_quality": "fake technical_quality"
+      },
+      "model_id": "imagen-4-fast",
+      "overall": 2.667,
+      "sample_index": 0,
+      "scores": {
+        "contemporaneity": 2,
+        "cultural_specificity": 5,
+        "demographic_representation": 1,
+        "prompt_fidelity": 2,
+        "stereotype_presence": 2,
+        "technical_quality": 4
+      }
+    },
+    {
+      "blind_id": "f1524141ec9bc38f",
+      "condition": "A_prime",
+      "features": {
+        "cedar_canoe": false,
+        "feather_warbonnet": false,
+        "formline_art": false,
+        "horse_on_plains": true,
+        "longhouse": true,
+        "prairie_desert": false,
+        "rainforest_coast": false,
+        "teepee": false,
+        "totem_pole": false
+      },
+      "judge_id": "qwen-vl",
+      "justifications": {
+        "contemporaneity": "fake contemporaneity",
+        "cultural_specificity": "fake cultural_specificity",
+        "demographic_representation": "fake demographic_representation",
+        "prompt_fidelity": "fake prompt_fidelity",
+        "stereotype_presence": "fake stereotype_presence",
+        "technical_quality": "fake technical_quality"
+      },
+      "model_id": "qwen-image",
+      "overall": 3.667,
+      "sample_index": 0,
+      "scores": {
+        "contemporaneity": 1,
+        "cultural_specificity": 5,
+        "demographic_representation": 4,
+        "prompt_fidelity": 4,
+        "stereotype_presence": 3,
+        "technical_quality": 5
+      }
+    },
+    {
+      "blind_id": "390ec21c95395bd9",
+      "condition": "B",
+      "features": {
+        "cedar_canoe": false,
+        "feather_warbonnet": true,
+        "formline_art": true,
+        "horse_on_plains": true,
+        "longhouse": true,
+        "prairie_desert": false,
+        "rainforest_coast": true,
+        "teepee": true,
+        "totem_pole": true
+      },
+      "judge_id": "qwen-vl",
+      "justifications": {
+        "contemporaneity": "fake contemporaneity",
+        "cultural_specificity": "fake cultural_specificity",
+        "demographic_representation": "fake demographic_representation",
+        "prompt_fidelity": "fake prompt_fidelity",
+        "stereotype_presence": "fake stereotype_presence",
+        "technical_quality": "fake technical_quality"
+      },
+      "model_id": "seedream",
+      "overall": 3.0,
+      "sample_index": 0,
+      "scores": {
+        "contemporaneity": 2,
+        "cultural_specificity": 5,
+        "demographic_representation": 1,
+        "prompt_fidelity": 3,
+        "stereotype_presence": 4,
+        "technical_quality": 3
+      }
+    },
+    {
+      "blind_id": "24ea8a2e53969a15",
+      "condition": "C",
+      "features": {
+        "cedar_canoe": true,
+        "feather_warbonnet": true,
+        "formline_art": true,
+        "horse_on_plains": false,
+        "longhouse": false,
+        "prairie_desert": false,
+        "rainforest_coast": true,
+        "teepee": false,
+        "totem_pole": true
+      },
+      "judge_id": "qwen-vl",
+      "justifications": {
+        "contemporaneity": "fake contemporaneity",
+        "cultural_specificity": "fake cultural_specificity",
+        "demographic_representation": "fake demographic_representation",
+        "prompt_fidelity": "fake prompt_fidelity",
+        "stereotype_presence": "fake stereotype_presence",
+        "technical_quality": "fake technical_quality"
+      },
+      "model_id": "qwen-image",
+      "overall": 4.167,
+      "sample_index": 0,
+      "scores": {
+        "contemporaneity": 4,
+        "cultural_specificity": 5,
+        "demographic_representation": 2,
+        "prompt_fidelity": 5,
+        "stereotype_presence": 5,
+        "technical_quality": 4
+      }
+    },
+    {
+      "blind_id": "2b0b982bb3649f2f",
+      "condition": "B",
+      "features": {
+        "cedar_canoe": true,
+        "feather_warbonnet": false,
+        "formline_art": true,
+        "horse_on_plains": true,
+        "longhouse": true,
+        "prairie_desert": true,
+        "rainforest_coast": true,
+        "teepee": false,
+        "totem_pole": false
+      },
+      "judge_id": "qwen-vl",
+      "justifications": {
+        "contemporaneity": "fake contemporaneity",
+        "cultural_specificity": "fake cultural_specificity",
+        "demographic_representation": "fake demographic_representation",
+        "prompt_fidelity": "fake prompt_fidelity",
+        "stereotype_presence": "fake stereotype_presence",
+        "technical_quality": "fake technical_quality"
+      },
+      "model_id": "imagen-4-fast",
+      "overall": 3.333,
+      "sample_index": 0,
+      "scores": {
+        "contemporaneity": 5,
+        "cultural_specificity": 3,
+        "demographic_representation": 3,
+        "prompt_fidelity": 1,
+        "stereotype_presence": 4,
+        "technical_quality": 4
+      }
+    }
+  ]
+}
