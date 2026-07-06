@@ -13,7 +13,9 @@ async def test_fake_chat_role_aware_and_redacted():
     assert "cultural_flags" in res.text
     assert res.model_id == "claude-opus-4-8"
     # different brains produce distinguishable finalizer output
-    other = await FakeChat("glm-5.2").complete(ChatRequest.from_prompt("ROLE: finalizer\nWrite it."))
+    other = await FakeChat("glm-5.2").complete(
+        ChatRequest.from_prompt("ROLE: finalizer\nWrite it.")
+    )
     mine = await chat.complete(ChatRequest.from_prompt("ROLE: finalizer\nWrite it."))
     assert other.text != mine.text
 

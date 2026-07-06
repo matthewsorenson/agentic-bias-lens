@@ -8,6 +8,7 @@ dry run with only live-endpoint risk left for a keyed run.
 from __future__ import annotations
 
 import hashlib
+import uuid
 from pathlib import Path
 
 from PIL import Image
@@ -49,7 +50,10 @@ def _canned(role: str, model_id: str, messages: list[dict]) -> str:
             "Watchlist: pan-Plains stereotype (warbonnet, teepee, horse, prairie)."
         )
     if role == "accuracy":
-        return f"Accuracy constraints {tag}: coastal rainforest and Pacific shoreline; no teepees; no prairie."
+        return (
+            f"Accuracy constraints {tag}: coastal rainforest and Pacific shoreline; "
+            "no teepees; no prairie."
+        )
     if role == "bias":
         return (
             f"Bias flags {tag}: risk of pan-Indian stereotype; enforce Haida/NW-coast specificity; "
@@ -57,12 +61,15 @@ def _canned(role: str, model_id: str, messages: list[dict]) -> str:
         )
     if role in ("finalizer", "verbose"):
         return (
-            f"A documentary photograph {tag} of Haida daily life on the Pacific Northwest Coast: "
-            "cedar longhouses, standing totem poles, an ocean-going cedar canoe, formline designs, "
-            "temperate rainforest and shoreline, natural light."
+            f"A documentary photograph {tag} of Haida daily life on the Pacific "
+            "Northwest Coast: cedar longhouses, standing totem poles, an ocean-going "
+            "cedar canoe, formline designs, temperate rainforest and shoreline, natural light."
         )
     if role == "guard":
-        return '{"cultural_flags": [], "notes": "no sacred or ceremonial content; specificity preserved"}'
+        return (
+            '{"cultural_flags": [], "notes": '
+            '"no sacred or ceremonial content; specificity preserved"}'
+        )
     return f"{tag} {_short(str(messages))}"
 
 
@@ -89,11 +96,15 @@ class FakeImage:
     async def generate(self, req: ImageRequest) -> ImageResult:
         self.images_dir.mkdir(parents=True, exist_ok=True)
         as_sent = req.prompt + (f" [reshaped for {self.id}]" if self.reshape else "")
+        # Unique token per call so distinct cells never collide on disk, even if
+        # two prompts happen to be byte-identical. The runner renames to a
+        # canonical cell path afterwards.
+        token = uuid.uuid4().hex[:12]
         stem = _short(f"{self.id}|{as_sent}|{req.seed}")
         color = tuple(int(stem[i : i + 2], 16) for i in (0, 2, 4))
-        raw = self.images_dir / f"{stem}.raw.png"
+        raw = self.images_dir / f"{token}.raw.png"
         Image.new("RGB", (96, 96), color).save(raw)
-        final = self.images_dir / f"{self.id}_{stem}.png"
+        final = self.images_dir / f"{self.id}_{token}.png"
         finalize_image(raw, final)
         raw.unlink(missing_ok=True)
         return ImageResult(

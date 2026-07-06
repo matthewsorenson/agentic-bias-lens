@@ -31,7 +31,6 @@ def _rank(values: list[float]) -> list[float]:
 
 def spearman(a: list[float], b: list[float]) -> float:
     ra, rb = _rank(a), _rank(b)
-    n = len(ra)
     mean_a, mean_b = statistics.fmean(ra), statistics.fmean(rb)
     cov = sum((x - mean_a) * (y - mean_b) for x, y in zip(ra, rb, strict=True))
     var_a = sum((x - mean_a) ** 2 for x in ra)
@@ -90,9 +89,15 @@ def self_preference_delta(
     judges = {v.judge_id for v in verdicts}
     for jid in judges:
         jv = judge_vendor.get(jid)
-        same = [v.overall for v in verdicts if v.judge_id == jid and model_vendor.get(v.model_id) == jv]
+        same = [
+            v.overall
+            for v in verdicts
+            if v.judge_id == jid and model_vendor.get(v.model_id) == jv
+        ]
         other = [
-            v.overall for v in verdicts if v.judge_id == jid and model_vendor.get(v.model_id) != jv
+            v.overall
+            for v in verdicts
+            if v.judge_id == jid and model_vendor.get(v.model_id) != jv
         ]
         if not same or not other:
             continue

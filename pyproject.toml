@@ -45,3 +45,7 @@ target-version = "py312"
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "UP", "B"]
+
+[tool.ruff.lint.per-file-ignores]
+# report.py holds Jinja templates whose table rows are legitimately long.
+"src/agentic_bias_lens/report.py" = ["E501"]

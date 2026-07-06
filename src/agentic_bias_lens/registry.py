@@ -29,7 +29,9 @@ PROVIDER_ENV: dict[str, str] = {
 
 class MissingProvider(RuntimeError):
     def __init__(self, model_id: str, provider: str):
-        super().__init__(f"model '{model_id}' needs provider '{provider}' but its API key is absent")
+        super().__init__(
+            f"model '{model_id}' needs provider '{provider}' but its API key is absent"
+        )
         self.model_id = model_id
         self.provider = provider
 
