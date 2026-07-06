@@ -6,6 +6,7 @@ and the tests, so both exercise identical orchestration code.
 
 from __future__ import annotations
 
+import shutil
 from collections.abc import Mapping
 from pathlib import Path
 
@@ -14,6 +15,16 @@ from pydantic import BaseModel
 from .capabilities import ChatModel, ImageModel, VisionJudge
 from .config import Settings
 from .fakes import FakeChat, FakeImage, FakeJudge
+
+
+def _looks_like_key(value: str) -> bool:
+    """True only for a plausible real key: rejects blanks and .env placeholders."""
+    v = (value or "").strip()
+    if len(v) < 8 or "<" in v or ">" in v:
+        return False
+    lowered = v.lower()
+    bad = ("your-", "your_", "optional-", "replace", "example", "changeme", "placeholder", "here")
+    return not any(b in lowered for b in bad)
 
 PROVIDER_ENV: dict[str, str] = {
     "openai": "OPENAI_API_KEY",
@@ -77,7 +88,25 @@ class Registry:
     def _has_key(self, provider: str) -> bool:
         if self.fake:
             return True
-        return bool(self.env.get(PROVIDER_ENV.get(provider, "")))
+        if provider == "anthropic":
+            return self._anthropic_mode() is not None
+        return _looks_like_key(self.env.get(PROVIDER_ENV.get(provider, ""), ""))
+
+    def _claude_path(self) -> str | None:
+        return shutil.which("claude")
+
+    def _anthropic_mode(self) -> str | None:
+        """How Pipeline B reaches Claude: 'api' (key), 'cli' (subscription), or None."""
+        backend = self.settings.experiment.get("anthropic_backend", "auto")
+        has_api = _looks_like_key(self.env.get("ANTHROPIC_API_KEY", ""))
+        cli = self._claude_path() is not None
+        if backend == "api":
+            return "api" if has_api else None
+        if backend == "cli":
+            return "cli" if cli else None
+        if has_api:
+            return "api"
+        return "cli" if cli else None
 
     def _used_providers(self) -> set[str]:
         used: set[str] = set()
@@ -105,7 +134,16 @@ class Registry:
         if self.fake:
             return FakeChat(model_id)
         provider = self.effective_provider(model_id)
-        if not self._has_key(provider):
+        if provider == "anthropic":
+            mode = self._anthropic_mode()
+            if mode is None:
+                raise MissingProvider(model_id, provider)
+            if mode == "cli":
+                from .adapters.claude_cli import ClaudeCliChat
+
+                return ClaudeCliChat(model_id, executable=self._claude_path() or "claude")
+            # mode == "api": fall through to the factory with the ANTHROPIC_API_KEY
+        elif not self._has_key(provider):
             raise MissingProvider(model_id, provider)
         return self._make_real("chat", model_id, provider)
 

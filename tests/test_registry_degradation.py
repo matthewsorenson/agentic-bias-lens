@@ -16,11 +16,26 @@ def test_fake_mode_all_available(config_dir, tmp_path):
 
 def test_real_mode_subset_degrades(config_dir):
     s = Settings.load(config_dir)
-    reg = Registry.build(s, env={"OPENAI_API_KEY": "x"}, fake=False)
+    s.experiment["anthropic_backend"] = "api"  # ignore any local claude CLI for determinism
+    reg = Registry.build(s, env={"OPENAI_API_KEY": "sk-real1234567890"}, fake=False)
     report = reg.availability_report()
     assert report.available == ["openai"]
     assert "anthropic" in report.missing
     assert "fal" in report.missing  # CN image models route to fal by default
+
+
+def test_placeholder_values_are_not_treated_as_keys(config_dir):
+    s = Settings.load(config_dir)
+    s.experiment["anthropic_backend"] = "api"
+    reg = Registry.build(
+        s,
+        env={"OPENAI_API_KEY": "sk-real1234567890", "FAL_KEY": "<your-fal-key>", "ZAI_API_KEY": ""},
+        fake=False,
+    )
+    report = reg.availability_report()
+    assert "openai" in report.available
+    assert "fal" in report.missing  # placeholder rejected
+    assert "zai" in report.missing  # blank rejected
 
 
 def test_chat_missing_provider_raises(config_dir):

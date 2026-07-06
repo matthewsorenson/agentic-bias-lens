@@ -28,6 +28,11 @@ judges: [gpt-4o, qwen-vl]
 
 research_mode: unsourced    # sourced | unsourced   (unsourced is the control)
 
+# How Pipeline B reaches Claude: auto uses ANTHROPIC_API_KEY if present, else the
+# local `claude` CLI (Claude Code subscription, no API key needed). Force with
+# 'api' or 'cli'.
+anthropic_backend: auto     # auto | api | cli
+
 # Pipeline A_prime (verbose-naive control) uses one model to expand the probe
 # into a long detailed prompt with NO bias reasoning, isolating verbosity from
 # agentic reasoning. Matched to Pipeline B's finalizer brain.

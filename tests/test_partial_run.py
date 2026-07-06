@@ -38,8 +38,11 @@ async def test_partial_key_run_skips_unavailable_brains(config_dir, tmp_path, pn
     s.experiment["conditions"] = ["A", "B"]  # B needs Anthropic brains
     s.experiment["image_models"] = ["gpt-image-1"]
     s.experiment["judges"] = ["gpt-4o"]
+    s.experiment["anthropic_backend"] = "api"  # no key + api mode => B is skipped
     rd = tmp_path / "run"
-    reg = Registry.build(s, env={"OPENAI_API_KEY": "sk-x"}, fake=False, images_dir=rd / "images")
+    reg = Registry.build(
+        s, env={"OPENAI_API_KEY": "sk-real1234567890"}, fake=False, images_dir=rd / "images"
+    )
 
     res = await run_experiment(s, reg, rd, rubric_text="r")
 

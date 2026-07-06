@@ -26,7 +26,10 @@ def test_factory_maps_kinds_and_providers(config_dir, tmp_path):
 
 def test_registry_real_mode_builds_only_available(config_dir, tmp_path):
     s = Settings.load(config_dir)
-    reg = Registry.build(s, env={"OPENAI_API_KEY": "k"}, fake=False, images_dir=tmp_path)
+    s.experiment["anthropic_backend"] = "api"  # ignore any local claude CLI
+    reg = Registry.build(
+        s, env={"OPENAI_API_KEY": "sk-real1234567890"}, fake=False, images_dir=tmp_path
+    )
     imgs = reg.image_models()
     assert [m.id for m in imgs] == ["gpt-image-1"]  # only openai has a key
     # the openai image adapter is a real adapter, built via the factory

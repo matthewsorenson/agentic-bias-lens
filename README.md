@@ -104,6 +104,11 @@ The system runs with whatever keys are present and marks the rest as skipped in 
 The two Chinese image models default to the fal.ai aggregator so you do not need the two hardest
 native signups. Switch routes in `config/experiment.yaml`.
 
+**Anthropic without an API key.** If the `claude` CLI (Claude Code) is installed, Pipeline B runs
+through your Claude subscription instead of a paid `ANTHROPIC_API_KEY`. This is the default
+(`anthropic_backend: auto` in `config/experiment.yaml`; force it with `api` or `cli`). It is slower
+(one subprocess per agent call) but free under the subscription.
+
 ## How to run
 
 ```
