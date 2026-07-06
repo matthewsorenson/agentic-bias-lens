@@ -62,8 +62,8 @@ Single-judge mode: judge disagreement not available (needs two judges).
 {% endif %}
 ## Vendor self-preference deltas
 
-Each judge shares a vendor with one image model (GPT-4o with gpt-image-1, Qwen-VL with qwen-image).
-A positive delta means the judge scored its own vendor's images higher than others.
+A judge may share a vendor with one of the image models (for example a judge and an image model from
+the same company). A positive delta means the judge scored its own vendor's images higher than others.
 
 {% for j, d in self_pref.items() -%}
 - {{ j }}: {{ d }}
