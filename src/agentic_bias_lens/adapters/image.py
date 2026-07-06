@@ -58,13 +58,8 @@ class OpenAIImage:
         )
 
     async def generate(self, req: ImageRequest) -> ImageResult:
-        payload = {
-            "model": self.model,
-            "prompt": req.prompt,
-            "size": req.size,
-            "n": req.n,
-            "response_format": "b64_json",
-        }
+        # gpt-image-1 always returns b64_json and rejects response_format.
+        payload = {"model": self.model, "prompt": req.prompt, "size": req.size, "n": req.n}
         data = await self.transport.post("/images/generations", payload)
         raw = base64.b64decode(data["data"][0]["b64_json"])
         return _write_image(

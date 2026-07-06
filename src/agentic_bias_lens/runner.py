@@ -51,6 +51,7 @@ class RunResult(BaseModel):
     transcripts: list[Transcript]
     image_records: list[ImageRecord]
     skipped_conditions: list[str] = []
+    failures: list[dict] = []
 
 
 async def run_experiment(
@@ -70,6 +71,7 @@ async def run_experiment(
     seed = int(settings.experiment.get("seed", 0))
     conc = int(settings.experiment.get("concurrency_per_provider", 3))
     style = str(settings.experiment.get("image_style") or "").strip()
+    failures: list[dict] = []  # runtime provider errors that were tolerated
 
     # A condition is only runnable if all its agent brains have keys. Skip the
     # rest cleanly instead of crashing (graceful degradation for partial keys).
@@ -82,11 +84,19 @@ async def run_experiment(
         else:
             skipped_conditions.append(cond)
 
-    # 1. Build prompts for every active condition, concurrently.
+    # 1. Build prompts for every active condition, concurrently. A condition
+    # whose agent chain errors at runtime (e.g. a brain API failure) is dropped
+    # with a recorded reason rather than crashing the whole run.
     async def build(cond: str):
         agents = PipelineBuilder.from_config(settings, cond)
         reps = k_prompt if cond in AGENTIC else 1
-        results = [await AgenticPipeline(agents, registry, cond).run(probe) for _ in range(reps)]
+        try:
+            results = [
+                await AgenticPipeline(agents, registry, cond).run(probe) for _ in range(reps)
+            ]
+        except Exception as exc:  # noqa: BLE001 - tolerate one condition's failure
+            failures.append({"stage": "prompt", "condition": cond, "error": str(exc)[:300]})
+            return cond, []
         return cond, results
 
     prompts_by_cond = dict(await asyncio.gather(*(build(c) for c in active_conditions)))
@@ -110,10 +120,16 @@ async def run_experiment(
             data = json.loads(sidecar.read_text(encoding="utf-8"))
             if Path(data["record"]["image_path"]).exists():
                 return ImageRecord(**data["record"])
-        async with sem_for(provider):
-            res = await model.generate(
-                ImageRequest(prompt=styled, seed=seed + pidx * 1000 + sidx)
+        try:
+            async with sem_for(provider):
+                res = await model.generate(
+                    ImageRequest(prompt=styled, seed=seed + pidx * 1000 + sidx)
+                )
+        except Exception as exc:  # noqa: BLE001 - one cell's failure must not abort the run
+            failures.append(
+                {"stage": "image", "condition": cond, "model_id": model.id, "error": str(exc)[:300]}
             )
+            return None
         # Rename to a canonical, unique cell path so provenance is unambiguous
         # even when two conditions coincidentally produce the same prompt.
         target = run_dir / "images" / f"{cond}_{model.id}_p{pidx}_s{sidx}.png"
@@ -165,6 +181,7 @@ async def run_experiment(
     manifest = _manifest(settings, registry, seed, probe, image_records)
     manifest["active_conditions"] = active_conditions
     manifest["skipped_conditions"] = skipped_conditions
+    manifest["failures"] = failures
     write_manifest(run_dir, manifest)
     dump_json(
         {
@@ -187,6 +204,7 @@ async def run_experiment(
         transcripts=transcripts,
         image_records=image_records,
         skipped_conditions=skipped_conditions,
+        failures=failures,
     )
 
 

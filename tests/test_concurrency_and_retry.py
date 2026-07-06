@@ -35,6 +35,28 @@ async def test_cache_reuses_cells_and_force_busts(config_dir, tmp_path, monkeypa
     assert calls["n"] == first * 2
 
 
+async def test_image_failure_is_tolerated_not_fatal(config_dir, tmp_path, monkeypatch):
+    original = fp.FakeImage.generate
+
+    async def maybe_fail(self, req):
+        if self.id == "qwen-image":
+            raise RuntimeError("403 exhausted balance")
+        return await original(self, req)
+
+    monkeypatch.setattr(fp.FakeImage, "generate", maybe_fail)
+
+    s = Settings.load(config_dir)
+    s.experiment["k_img"] = 1
+    s.experiment["conditions"] = ["A"]
+    rd = tmp_path / "run"
+    reg = Registry.build(s, fake=True, images_dir=rd / "images")
+    res = await run_experiment(s, reg, rd, rubric_text="r")
+
+    assert res.image_count == 3  # 4 models, one failing, run still completes
+    assert any(f["model_id"] == "qwen-image" for f in res.failures)
+    assert (rd / "report.md").exists()
+
+
 async def test_agent_chain_is_sequential_order(config_dir, tmp_path):
     # ordering is a correctness property: each role consumes the prior one's output
     s = Settings.load(config_dir)

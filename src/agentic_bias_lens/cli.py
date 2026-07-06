@@ -98,6 +98,11 @@ def main(argv=None) -> int:
         print(f"providers skipped (no key): {', '.join(avail.missing)}")
     if result.skipped_conditions:
         print(f"conditions skipped (no brain key): {', '.join(result.skipped_conditions)}")
+    if result.failures:
+        print(f"runtime failures tolerated: {len(result.failures)}")
+        for f in result.failures[:6]:
+            where = f.get("model_id") or f.get("condition")
+            print(f"  - [{f['stage']}] {where}: {f['error'][:120]}")
     print(f"report: {result.run_dir / 'report.md'}")
     return 0
 
