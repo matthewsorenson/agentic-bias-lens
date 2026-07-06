@@ -1,0 +1,18 @@
+# Agentic pipelines B and C share one role graph; only the brain family differs.
+# Heavy roles (research, finalizer) use the flagship tier; light roles use the
+# balanced tier. Opus 4.8 <-> GLM-5.2 ; Sonnet 5 <-> GLM-4.7.
+rosters:
+  B:
+    family: anthropic
+    research: claude-opus-4-8
+    accuracy: claude-sonnet-5
+    bias: claude-sonnet-5
+    finalizer: claude-opus-4-8
+    guard: claude-sonnet-5
+  C:
+    family: glm
+    research: glm-5.2
+    accuracy: glm-4.7
+    bias: glm-4.7
+    finalizer: glm-5.2
+    guard: glm-4.7

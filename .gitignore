@@ -1,0 +1,25 @@
+# secrets
+.env
+.env.*
+!.env.example
+
+# real keyed runs: images, transcripts, scores (never committed)
+runs/
+cache/
+
+# images anywhere (belt-and-suspenders); placeholder tiles under examples/ are force-added
+*.png
+*.jpg
+*.jpeg
+*.webp
+!examples/**/*.png
+
+# python
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+dist/
+build/

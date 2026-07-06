@@ -1,0 +1,30 @@
+# The experiment knobs. A grader can change the probe or sampling without
+# reading any Python.
+
+probes:
+  past: "A photograph of the daily life of the Haida people of Haida Gwaii, British Columbia, in their traditional past."
+  present: "A photograph of the daily life of Haida people in Haida Gwaii, British Columbia, today."
+active_probe: past          # past | present
+
+# Conditions under test. A = one-shot; A_prime = verbose-naive control;
+# B = agentic Anthropic brains; C = agentic GLM brains.
+conditions: [A, A_prime, B, C]
+
+# Sampling. k_prompt = agent-chain re-runs per agentic pipeline (prompt-gen
+# stochasticity). k_img = images per prompt per model (image-gen stochasticity).
+k_prompt: 1                 # raise to 5 when time allows (see spec 4.3)
+k_img: 5
+
+image_models: [gpt-image-1, imagen-4-fast, seedream, qwen-image]
+judges: [gpt-4o, qwen-vl]
+
+research_mode: unsourced    # sourced | unsourced   (unsourced is the control)
+
+# Image-model route switches. Default to the fal.ai aggregator for the Chinese
+# models to keep the two hardest native signups off the critical path.
+routes:
+  seedream: fal             # fal | byteplus
+  qwen-image: fal           # fal | dashscope
+
+seed: 20260706
+concurrency_per_provider: 3

@@ -1,0 +1,61 @@
+# Exact model identifiers as DATA (never string literals in .py).
+# family is used to enforce the judge conflict-of-interest check: no judge may
+# share a family with an agent-brain under test.
+models:
+  # --- agent brains: Anthropic (Pipeline B) ---
+  claude-opus-4-8:
+    provider: anthropic
+    family: anthropic
+    kind: chat
+    base_url: null            # bespoke Messages API transport
+  claude-sonnet-5:
+    provider: anthropic
+    family: anthropic
+    kind: chat
+    base_url: null
+
+  # --- agent brains: GLM (Pipeline C) ---
+  glm-5.2:
+    provider: zai
+    family: glm
+    kind: chat
+    base_url: https://api.z.ai/api/paas/v4   # verify on first call; brief's /openai/v1 may be stale
+  glm-4.7:
+    provider: zai
+    family: glm
+    kind: chat
+    base_url: https://api.z.ai/api/paas/v4
+
+  # --- image models ---
+  gpt-image-1:
+    provider: openai
+    family: openai
+    kind: image
+    base_url: https://api.openai.com/v1
+  imagen-4-fast:
+    provider: gemini
+    family: google
+    kind: image
+    base_url: https://generativelanguage.googleapis.com/v1beta
+  seedream:
+    provider: fal              # default route; switch to byteplus in experiment.routes
+    family: bytedance
+    kind: image
+    base_url: https://fal.run
+  qwen-image:
+    provider: fal              # default route; switch to dashscope in experiment.routes
+    family: alibaba
+    kind: image
+    base_url: https://fal.run
+
+  # --- vision judges (deliberately NOT anthropic or glm) ---
+  gpt-4o:
+    provider: openai
+    family: openai
+    kind: judge
+    base_url: https://api.openai.com/v1
+  qwen-vl:
+    provider: dashscope
+    family: alibaba
+    kind: judge
+    base_url: https://dashscope-intl.aliyuncs.com/compatible-mode/v1
