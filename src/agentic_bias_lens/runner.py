@@ -162,7 +162,7 @@ async def run_experiment(
     # 3. Score (blinded) with whatever judges are available.
     judges = registry.judges()
     if judges and image_records:
-        table = await score_images(
+        table, judge_failures = await score_images(
             image_records,
             judges,
             rubric=rubric_text,
@@ -170,6 +170,7 @@ async def run_experiment(
             seed=seed,
             blind_dir=run_dir / "_blind",
         )
+        failures.extend(judge_failures)
     else:
         table = ScoringTable(verdicts=[])
 

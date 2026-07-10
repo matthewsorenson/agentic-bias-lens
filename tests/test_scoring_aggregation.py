@@ -31,9 +31,10 @@ def _records(tmp_path):
 async def test_scoring_produces_blinded_verdicts(tmp_path):
     recs = _records(tmp_path)  # 12 images
     judges = [FakeJudge("gpt-4o"), FakeJudge("qwen-vl")]
-    table = await score_images(
+    table, failures = await score_images(
         recs, judges, rubric="r", probe_intent="intent", seed=1, blind_dir=tmp_path / "_b"
     )
+    assert failures == []
     assert len(table.raw()) == 24  # 12 images x 2 judges
     for v in table.raw():
         assert set(v.scores) == set(METRICS)
@@ -49,11 +50,41 @@ async def test_judge_request_carries_no_provenance():
 
 async def test_aggregation_groups_by_model_and_condition(tmp_path):
     recs = _records(tmp_path)
-    table = await score_images(
+    table, failures = await score_images(
         recs, [FakeJudge("gpt-4o")], rubric="r", probe_intent="i", seed=3, blind_dir=tmp_path / "_b"
     )
+    assert failures == []
     agg = table.by_model_condition()
     assert len(agg) == 12  # 4 models x 3 conditions
     cell = agg["gpt-image-1|A"]
     assert cell["n"] == 1
     assert set(cell["metric_means"]) == set(METRICS)
+
+
+class _FlakyJudge:
+    """Wraps a real judge but raises on its first N calls, like a transient
+    network blip (DNS failure, timeout, rate limit) mid-scoring."""
+
+    id = "flaky-judge"
+
+    def __init__(self, real, fail_count=1):
+        self._real = real
+        self._remaining_failures = fail_count
+
+    async def judge(self, req):
+        if self._remaining_failures > 0:
+            self._remaining_failures -= 1
+            raise RuntimeError("simulated network failure")
+        return await self._real.judge(req)
+
+
+async def test_judge_call_failure_is_tolerated_not_fatal(tmp_path):
+    recs = _records(tmp_path)  # 12 images
+    flaky = _FlakyJudge(FakeJudge("gpt-4o"), fail_count=1)
+    table, failures = await score_images(
+        recs, [flaky], rubric="r", probe_intent="i", seed=5, blind_dir=tmp_path / "_b"
+    )
+    assert len(table.raw()) == 11  # 12 images, one judge call failed and was skipped
+    assert len(failures) == 1
+    assert failures[0]["judge_id"] == "flaky-judge"
+    assert "simulated network failure" in failures[0]["error"]

@@ -6,9 +6,10 @@ Probe: {{ probe }}
 Research brief: {{ research }}
 Accuracy constraints: {{ accuracy }}
 
-Task: flag the biases the image model is likely to introduce. Watch specifically for the pan-Plains
-stereotype (feather warbonnet, teepee, horse, prairie or desert), homogeneous or token depictions,
-missing perspectives, and frozen-in-the-past framing that erases the contemporary Nation. Recommend
-concrete, specific mitigations.
+Task: flag only biases plausibly relevant to this exact probe. Look for unsupported narrowing,
+demeaning visual shorthand, tokenism, and stereotypes without assuming that any identity or culture
+is a default. Do not prescribe demographic balancing for a single image, introduce an unstated
+group, or replace the subject with a counter-stereotype. Recommend the smallest mitigation that
+preserves the user's intent and ambiguity.
 
 Output: bias flags and mitigations.

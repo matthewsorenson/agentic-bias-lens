@@ -3,7 +3,12 @@ import json
 import httpx
 import respx
 
-from agentic_bias_lens.adapters.judge import GeminiJudge, Gpt4oJudge
+from agentic_bias_lens.adapters.judge import (
+    GENERIC_JUDGE_POLICY,
+    GeminiJudge,
+    Gpt4oJudge,
+    _judge_instruction,
+)
 from agentic_bias_lens.capabilities import JudgeRequest
 from agentic_bias_lens.rubric_spec import FEATURE_KEYS, METRICS
 
@@ -22,6 +27,13 @@ def _verdict_json(feature_value=False):
 
 def _judge():
     return Gpt4oJudge("gpt-4o", "https://api.openai.com/v1", "k", model="gpt-4o")
+
+
+def test_judge_instruction_enforces_generic_policy():
+    text = _judge_instruction("rubric", "a probe")
+    assert GENERIC_JUDGE_POLICY in text
+    assert "not biased merely because one demographic is visible" in text
+    assert "probe as the only source" in text
 
 
 @respx.mock

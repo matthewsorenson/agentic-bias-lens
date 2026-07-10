@@ -34,4 +34,4 @@ def test_judge_conflict_of_interest_is_warning_then_strict_raises(config_dir):
 
 def test_active_probe_text(config_dir):
     s = Settings.load(config_dir)
-    assert "Haida" in s.active_probe_text()
+    assert s.active_probe_text() == "A photograph of a nurse at work."

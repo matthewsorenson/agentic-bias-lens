@@ -1,6 +1,6 @@
 from agentic_bias_lens.agents import PipelineBuilder
 from agentic_bias_lens.config import Settings
-from agentic_bias_lens.pipeline import AgenticPipeline
+from agentic_bias_lens.pipeline import GENERIC_PROMPT_POLICY, AgenticPipeline
 from agentic_bias_lens.registry import Registry
 
 
@@ -19,6 +19,10 @@ async def test_b_and_c_share_impl(config_dir, tmp_path):
     )
     assert b.transcript.turns[0].model_id == "claude-opus-4-8"
     assert c.transcript.turns[0].model_id == "glm-5.2"
+    assert all(
+        turn.rendered_prompt.startswith(GENERIC_PROMPT_POLICY)
+        for turn in b.transcript.turns + c.transcript.turns
+    )
     # different brains produce distinguishable finalized prompts
     assert b.final_prompt != c.final_prompt
     assert isinstance(b.cultural_flags, list)
@@ -40,4 +44,5 @@ async def test_a_prime_single_verbose_turn(config_dir, tmp_path):
     ).run("PROBE")
     assert len(ap.transcript.turns) == 1
     assert ap.transcript.turns[0].role == "verbose"
+    assert ap.transcript.turns[0].rendered_prompt.startswith(GENERIC_PROMPT_POLICY)
     assert ap.final_prompt != "PROBE"

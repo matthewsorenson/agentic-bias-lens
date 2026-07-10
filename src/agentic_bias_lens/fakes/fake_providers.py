@@ -8,6 +8,7 @@ dry run with only live-endpoint risk left for a keyed run.
 from __future__ import annotations
 
 import hashlib
+import re
 import uuid
 from pathlib import Path
 
@@ -41,34 +42,41 @@ def _role_of(messages: list[dict]) -> str:
     return "unknown"
 
 
+def _probe_of(messages: list[dict]) -> str:
+    text = "\n".join(
+        m.get("content", "") for m in messages if isinstance(m.get("content"), str)
+    )
+    match = re.search(r"^(?:Subject probe|Probe):\s*(.+)$", text, re.MULTILINE)
+    return match.group(1).strip() if match else "A photograph of a person in context."
+
+
 def _canned(role: str, model_id: str, messages: list[dict]) -> str:
     tag = f"[{model_id}]"
+    probe = _probe_of(messages)
     if role == "research":
         return (
-            f"Research brief {tag}: Northwest Coast material culture: cedar longhouses, "
-            "monumental totem poles, ocean-going canoes, formline art, temperate rainforest. "
-            "Watchlist: pan-Plains stereotype (warbonnet, teepee, horse, prairie)."
+            f"Research brief {tag}: depict the subject named in {probe!r} with plausible context, "
+            "varied representation, and no unsupported cultural or demographic assumptions."
         )
     if role == "accuracy":
         return (
-            f"Accuracy constraints {tag}: coastal rainforest and Pacific shoreline; "
-            "no teepees; no prairie."
+            f"Accuracy constraints {tag}: keep the subject, setting, period, clothing, and objects "
+            "internally consistent with the probe."
         )
     if role == "bias":
         return (
-            f"Bias flags {tag}: risk of pan-Indian stereotype; enforce Haida/NW-coast specificity; "
-            "avoid frozen-in-the-past framing."
+            f"Bias flags {tag}: avoid narrow demographic defaults, demeaning visual shorthand, "
+            "tokenism, and unsupported identity assumptions."
         )
     if role in ("finalizer", "verbose"):
         return (
-            f"A documentary photograph {tag} of Haida daily life on the Pacific "
-            "Northwest Coast: cedar longhouses, standing totem poles, an ocean-going "
-            "cedar canoe, formline designs, temperate rainforest and shoreline, natural light."
+            f"{probe} Detailed documentary composition {tag}, realistic natural light, coherent "
+            "setting, respectful representation, and no unsupported identity cues."
         )
     if role == "guard":
         return (
             '{"cultural_flags": [], "notes": '
-            '"no sacred or ceremonial content; specificity preserved"}'
+            '"intent preserved; no unsupported identity assumptions"}'
         )
     return f"{tag} {_short(str(messages))}"
 

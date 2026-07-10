@@ -1,8 +1,8 @@
 """Burn an 'AI-GENERATED' banner into every surfaced image and strip metadata.
 
-Ethics requirement: no generated image may circulate without a visible mark that
-it is a synthetic guess, not authentic Haida imagery. finalize_image() is the
-single entry point adapters use so the guarantee cannot be bypassed.
+No generated image may circulate without a visible mark that it is synthetic.
+finalize_image() is the single entry point adapters use so the guarantee cannot
+be bypassed.
 """
 
 from __future__ import annotations
@@ -11,7 +11,7 @@ from pathlib import Path
 
 from PIL import Image, ImageDraw, ImageFont
 
-DEFAULT_BANNER = "AI-GENERATED, not authentic Haida imagery"
+DEFAULT_BANNER = "AI-GENERATED IMAGE - RESEARCH OUTPUT"
 
 
 def _load_font(size: int) -> ImageFont.ImageFont:

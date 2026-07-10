@@ -77,7 +77,7 @@ async def score_images(
     *,
     seed: int,
     blind_dir: str | Path | None = None,
-) -> ScoringTable:
+) -> tuple[ScoringTable, list[dict]]:
     blind_dir = Path(blind_dir or tempfile.mkdtemp(prefix="abl_blind_"))
     blind_dir.mkdir(parents=True, exist_ok=True)
 
@@ -89,13 +89,26 @@ async def score_images(
         blinded.append((bid, rec, bpath))
 
     verdicts: list[Verdict] = []
+    failures: list[dict] = []
     for judge in judges:
         order = blinded[:]
         random.Random(f"{seed}:{judge.id}").shuffle(order)
         for bid, rec, bpath in order:
-            jr = await judge.judge(
-                JudgeRequest(image_path=bpath, rubric=rubric, probe_intent=probe_intent)
-            )
+            try:
+                jr = await judge.judge(
+                    JudgeRequest(image_path=bpath, rubric=rubric, probe_intent=probe_intent)
+                )
+            except Exception as exc:  # noqa: BLE001 - one judge call's failure must not abort scoring
+                failures.append(
+                    {
+                        "stage": "judge",
+                        "judge_id": judge.id,
+                        "condition": rec.condition,
+                        "model_id": rec.model_id,
+                        "error": str(exc)[:300],
+                    }
+                )
+                continue
             scores = {m: jr.scores[m].score for m in METRICS}
             verdicts.append(
                 Verdict(
@@ -110,4 +123,4 @@ async def score_images(
                     justifications={m: jr.scores[m].justification for m in METRICS},
                 )
             )
-    return ScoringTable(verdicts=verdicts)
+    return ScoringTable(verdicts=verdicts), failures

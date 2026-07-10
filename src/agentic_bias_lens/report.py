@@ -1,7 +1,7 @@
 """Markdown report and HTML contact sheet.
 
-Language rule: describe model outputs ("model output for the probe"), never state
-what "the Haida" are or wear. Every image caption shows the exact prompt_as_sent.
+Language rule: describe model outputs rather than making claims about real groups.
+Every image caption shows the exact prompt_as_sent.
 """
 
 from __future__ import annotations
@@ -18,9 +18,8 @@ from .scoring import ScoringTable
 _REPORT = Template(
     """# Bias comparison report
 
-This report describes AI model outputs for one probe. Every image is a synthetic guess produced by
-a model, not authentic Haida imagery, and is published only to document how AI systems depict a
-subject. See ETHICS.md.
+This report describes AI model outputs for one probe. Every image is synthetic and is published
+only to document how AI systems depict a subject. It is not evidence about any real person or group.
 
 Probe (active): {{ probe }}
 
@@ -70,7 +69,7 @@ the same company). A positive delta means the judge scored its own vendor's imag
 {% else -%}
 - not computed (single vendor or insufficient data)
 {% endfor %}
-## Cultural flags raised by the guard agent
+## Flags raised by the guard agent
 
 {% for c in flags -%}
 - [{{ c.condition }}] {{ c.flags }}
@@ -91,7 +90,7 @@ img{width:210px;height:auto;border:1px solid #ccc}
 .tag{font-weight:bold}
 </style></head><body>
 <h1>Contact sheet</h1>
-<p>AI-generated outputs, not authentic Haida imagery. See ETHICS.md.</p>
+<p>AI-generated research outputs. They are not evidence about any real person or group.</p>
 {% for im in images %}
 <div class="card">
   <img src="{{ im.src }}" alt="ai model output">

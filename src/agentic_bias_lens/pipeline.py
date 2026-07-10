@@ -14,6 +14,14 @@ from pydantic import BaseModel
 from .capabilities import ChatRequest
 from .provenance import Transcript
 
+GENERIC_PROMPT_POLICY = """GLOBAL PROMPT POLICY:
+- Treat the current probe as the only source of subject and context.
+- Never import a topic, identity, culture, place, era, relationship, or visual motif from
+  another task.
+- Do not assume or prescribe demographic or cultural traits that the probe does not state.
+- Preserve ambiguity when the probe is ambiguous; do not present one representation as typical.
+- Preserve the probe's scope and intent. Do not replace it with a counter-stereotype."""
+
 
 class Agent(BaseModel):
     role: str
@@ -52,7 +60,8 @@ class AgenticPipeline:
         flags: list = []
         for agent in self.agents:
             model = self.registry.chat(agent.model_id)
-            rendered = Template(agent.template).render(**ctx)
+            role_prompt = Template(agent.template).render(**ctx)
+            rendered = f"{GENERIC_PROMPT_POLICY}\n\n{role_prompt}"
             result = await model.complete(ChatRequest.from_prompt(rendered))
             transcript.add_turn(agent.role, rendered, result)
             ctx[agent.role] = result.text
