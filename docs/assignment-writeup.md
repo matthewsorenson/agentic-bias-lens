@@ -132,9 +132,63 @@ are a pilot, not a powered study.
 
 ## 5. Reflection
 
-*(Written separately.)*
+This was a fascinating project for me because it let me combine the agentic system building I do in
+my day-to-day work with Claude Code with a deliberate test of something I had only ever read about.
+Across my MET courses I have met the argument that these systems carry bias many times, but I had
+never sat down and tried to provoke it on purpose. Watching it happen was different from reading
+about it. Some of the bias was exactly what the literature predicts, and some of it surprised me.
+
+The clearest surprise came from Imagen 4 in the one-shot condition, which seemed to counter-stereotype
+almost everything on its own: a male nurse, a female CEO, a beautiful man, and a mixed-race family.
+The judge's checklist backs this up, tagging both feminine and masculine coding in those one-shot
+images where the other models settled on a single default. It was a useful reminder that "the model"
+is not one thing. Debiasing is already baked into some systems unevenly, so the raw output of one
+vendor is not a clean picture of the raw output of another.
+
+The family dinner probe was the most interesting to me, and it turned into the sharpest lesson of the
+project. In the one-shot condition the Chinese models, which were the only ones to render clearly
+Asian people at all, sat those people in front of Western meals with Western cutlery. When the
+agentic pipeline took over, Seedream produced what looked to me like the most authentic Chinese meals
+in the whole study. The catch is that the Gemini judge flagged exactly those images as "unsupported
+cultural specificity," and the feature data confirms it. In other words, the reviewer treated a
+culturally specific dinner as a deviation to be penalized, because the probe never named a culture and
+the judge's unspoken default was an unmarked, Western one. This is Crawford's (2021) argument made
+concrete, that there is no neutral ground for these systems and that classification is itself a
+political act. It also exposes a blindness I built into my own design: the judge never knew it was
+scoring Chinese models, and I suspect it would have scored those meals differently if it had. Hao's
+(2025) framing of modern AI as an empire fits here, because whose dinner counts as "specific" and
+whose counts as "default" is a question of whose values sit at the center.
+
+The criminal probe showed the opposite move. Across the board the models avoided dark skin for this
+label. None of the criminal images were even coded as dark-skinned by the judge, which stands in
+sharp contrast to the person from Africa probe, where dark skin appeared freely. The one image I read
+as darker, from Seedream in the one-shot condition, is the same one the judge flagged as an overt and
+demeaning stereotype. Reading the two probes together, the models seem to steer away from dark skin
+precisely when the label is negative, which looks like an industry-wide overcorrection. Buolamwini's
+(2023) idea of the coded gaze captures this well, because who a vision system is willing to depict,
+and in what role, reflects the priorities of the people who built it.
+
+Overcorrection had a second face in the agentic runs. The Claude-brained pipeline, which is Condition
+B in my setup, rewrote the criminal as a composed, white-collar woman, and it did this across all four
+image models rather than just one. The GLM pipeline in Condition C kept the subject masculine but
+leaned on explicit "leave it unspecified" language, and to my eye it produced the more varied results
+without those jarring flips. The lesson is that removing a stereotype is not the same as removing an
+editorial choice. Condition B did not erase the bias in "criminal," it substituted a new and equally
+unsupported identity.
+
+If I take best practices away from this, they are four. First, bias lives in the distribution rather
+than the single image, so it has to be audited across many outputs instead of judged one at a time.
+Second, the evaluator is itself a biased and culturally situated system, so a single judge, especially
+one blind to what it is scoring, is not enough; a more honest setup would use culturally plural
+reviewers and let them see provenance where that matters. Third, a "neutral" prompt is never neutral,
+it simply hands the decision to whatever default the model absorbed. And fourth, debiasing has to be
+watched for overcorrection, because a pipeline that is proud of avoiding one stereotype can quietly
+manufacture another.
 
 ## References
+
+Buolamwini, J. (2023). Unmasking AI: My mission to protect what is human in a world of machines.
+Random House.
 
 Coleman, B. (2021). Technology of the surround. Catalyst: Feminism, Theory, Technoscience, 7(2),
 1-21.
