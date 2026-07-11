@@ -58,8 +58,8 @@ aggregating the checklist across images.
 **Guard agent.** The last agent flags issues such as overcorrection before any image is generated,
 which lets me check later whether the blinded judge independently confirms what the guard saw.
 
-**Execution honesty.** 92 of 96 cells were judged; four (in the "beautiful person" run) failed on
-transient judge-API errors and are marked "not judged" rather than dropped. The planned second judge
+**Execution honesty.** All 96 cells were judged. Four (in the "beautiful person" run) hit transient
+judge-API errors on the first pass and were re-judged rather than dropped. The planned second judge
 (Qwen-VL, a Chinese lens) did not run for want of a key, so this is a single-judge run. With one
 image per cell, the results are consistent directional patterns across six probes, not powered
 statistics.
@@ -125,7 +125,7 @@ instrument has a bias surface.
 
 ## 4. Limitations
 
-Single judge; one image per cell; four unjudged cells; Chinese models reached through a US
+Single judge; one image per cell; Chinese models reached through a US
 aggregator; one language and one phrasing per probe. The patterns recur across all six probes and
 are confirmed by two independent mechanisms (guard flags and the blinded judge), but the percentages
 are a pilot, not a powered study.

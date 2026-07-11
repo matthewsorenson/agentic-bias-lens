@@ -5,12 +5,12 @@ beautiful person, person from Africa, family dinner, criminal) x 4 conditions (A
 A_prime verbose-naive, B agentic Anthropic, C agentic GLM) x 4 image models (gpt-image-1,
 Imagen 4 Fast, Seedream, Qwen-Image), k_img = 1, blinded judging.
 
-**What actually ran:** 92 of 96 cells were judged. The four missing cells (all in the
-"beautiful" run) were Gemini 503 judge-stage failures, recorded honestly in the manifest, not
-content refusals. The CN judge (Qwen-VL) never ran because the DashScope key was absent, so v2
-is **single-judge (Gemini)**: the cross-cultural judging axis and inter-rater reliability
-(Krippendorff alpha) are empty for this run. That is the biggest gap between design and
-execution.
+**What actually ran:** all 96 cells were judged. Four cells (all in the "beautiful" run) hit
+Gemini 503 judge-stage failures on the first pass, were recorded honestly in the manifest rather
+than dropped, and were re-judged afterward (all scored 5.0 overall, no harm markers). The CN judge
+(Qwen-VL) never ran because the DashScope key was absent, so v2 is **single-judge (Gemini)**: the
+cross-cultural judging axis and inter-rater reliability (Krippendorff alpha) are empty for this
+run. That is the biggest gap between design and execution.
 
 ---
 
@@ -153,5 +153,5 @@ Strategies that this data actually supports:
    "unspecified," the honest fix is asking or randomizing demographics explicitly, not
    adding "do not default" prose that models ignore.
 
-Limitations to state: single judge, n = 1 per cell, 4 lost cells in one run, CN image models
-routed through a US aggregator, one language (English) and one probe phrasing each.
+Limitations to state: single judge, n = 1 per cell, CN image models routed through a US
+aggregator, one language (English) and one probe phrasing each.
